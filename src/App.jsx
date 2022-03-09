@@ -1,9 +1,34 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import "./app.scss"
+import Navbar from "./components/navbar/Navbar"
 import Home from "./Homepage/Home"
+import { Routes, Route, } from "react-router-dom";
+import Login from "./components/auth/Login"
+
+
 
 
 const App = () => {
-  return <Home/>;
+  return <div><Navbar/>
+  <Routes>
+
+<Route exact path={"/"} element={<Home/>} />
+
+<Route exact path="/login" element={<Login/>} />
+
+{/* <Route exact path="/register" element={<Register/>} />
+
+<Route exact path="/profile" element={<Profile/>} /> */}
+
+{/* <Route path="/user" component={BoardUser} />
+
+<Route path="/mod" component={BoardModerator} />
+
+<Route path="/admin" component={BoardAdmin} /> */}
+
+</Routes>
+  </div>
+
 };
 
 export default App;

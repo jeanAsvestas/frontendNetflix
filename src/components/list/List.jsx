@@ -26,7 +26,7 @@ export default function List() {
         <span className="listTitle">Continue to watch</span>
         <div className="wrapper">
             <ArrowBackIosOutlined className="sliderArrow left" onClick={() => handleClick("left")}/>
-            <div className="container" ref={listRef}>
+            <div className="container2" ref={listRef}>
                 <ListItem/>
                 <ListItem/>
                 <ListItem/>
