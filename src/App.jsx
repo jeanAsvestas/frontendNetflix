@@ -1,30 +1,35 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import "./app.scss"
 import Navbar from "./components/navbar/Navbar"
-import Home from "./Homepage/Home"
+import Home from "./pages/Homepage/Home"
 import { Routes, Route, } from "react-router-dom";
-import Login from "./components/auth/Login"
+import Login from "../src/pages/Login/Login"
+import Watch from "./pages/watch/Watch"
+import Register from "./pages/Register/Register"
 
 
 
 
 const App = () => {
-  return <div><Navbar/>
+ 
+  return <div>
   <Routes>
 
 <Route exact path={"/"} element={<Home/>} />
 
 <Route exact path="/login" element={<Login/>} />
 
-{/* <Route exact path="/register" element={<Register/>} />
+<Route exact path="/register" element={<Register/>} />
 
-<Route exact path="/profile" element={<Profile/>} /> */}
+<Route exact path="/watch" element={<Watch/>} />
 
-{/* <Route path="/user" component={BoardUser} />
+{/* /* <Route exact path="/profile" element={<Profile/>} />  
+
+/* <Route path="/user" component={BoardUser} />
 
 <Route path="/mod" component={BoardModerator} />
 
-<Route path="/admin" component={BoardAdmin} /> */}
+<Route path="/admin" component={BoardAdmin} />   */}
 
 </Routes>
   </div>
