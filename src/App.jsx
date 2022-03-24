@@ -10,9 +10,10 @@ import Register from "./pages/Register/Register"
 
 
 
+
 const App = () => {
  
-  return <div>
+  return <div><Navbar/>
   <Routes>
 
 <Route exact path={"/"} element={<Home/>} />

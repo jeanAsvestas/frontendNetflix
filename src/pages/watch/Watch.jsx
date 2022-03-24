@@ -5,7 +5,7 @@ export default function Watch() {
   return (
     <div className='watch'>
             <div className="back">
-                <ArrowBackOutlined/> Home
+                <ArrowBackOutlined/>Home
                 </div>
                 <iframe className='videoz'
                 width="885" 

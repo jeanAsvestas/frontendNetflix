@@ -36,9 +36,7 @@ export default function Register() {
             <button className="registerButton" onClick={handleStart}>
               Get Started
             </button>
-          </div>
-
-          // 4 inputs ,  Firstname , Lastname , DateofBirth , Password ,  
+          </div> 
           ) : (
           <form className="input">
           <input type="password" placeholder = "password" ref={passwordRef} />
