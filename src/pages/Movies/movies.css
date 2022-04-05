@@ -1,0 +1,31 @@
+main .featured {
+  height: 20vh;
+}
+
+.album {
+  min-height: 63vh;
+}
+
+.album .card {
+  background-color: var(--main-color);
+  margin-right: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.album .card .listItem img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.album .card .listItem video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+}
+
+.album .card .listItem:hover {
+  width: auto;
+  height: auto;
+}
+/*# sourceMappingURL=movies.css.map */

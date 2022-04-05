@@ -1,0 +1,48 @@
+main {
+  .featured {
+    height: 20vh;
+  }
+
+}
+
+.album {
+  min-height: 63vh;
+
+
+
+  .card {
+    background-color: var(--main-color);
+    margin-right: 5px;
+    cursor: pointer;
+    color: white;
+
+    .listItem {
+
+      img {
+        object-fit: cover;
+      }
+
+
+      &:hover {
+        width: 475px;
+        height: 425px;
+        left: -60px;
+        position: absolute;
+
+        .itemInfo {
+          height: 30%;
+          display: flex;
+          flex-direction: column;
+          padding: 5px;
+        }
+
+        video {
+          object-fit: cover;
+          position: absolute;
+          width: 100%;
+        }
+      }
+    }
+
+  }
+}

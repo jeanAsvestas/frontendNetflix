@@ -1,7 +1,17 @@
 import { ArrowBackOutlined } from '@material-ui/icons'
 import "./watch.scss"
+import MovieService from '../../services/movie_service'
+import { useEffect, useState } from "react";
 
 export default function Watch() {
+  const [movie, setMovie] = useState();
+  useEffect(() => {
+    MovieService.getOneMovie(window.location.pathname.split('/')[2]).then((res) => {
+      setMovie(res)
+    })
+
+  }, []);
+  //console.log(movie.movie.movieContent);
   return (
     <div className='watch'>
             <div className="back">
@@ -10,12 +20,13 @@ export default function Watch() {
                 <iframe className='videoz'
                 width="885" 
                 height="498" 
-                src="https://www.youtube.com/embed/K2P2ByOtOOs"
+        src={`https://www.youtube.com/embed/${movie?.movie.movieContent}`}
                 title="YouTube video player" 
-                frameborder="0" 
+        frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
+        allowFullScreen></iframe>
           
     </div>
   )
 }
+// K2P2ByOtOOs

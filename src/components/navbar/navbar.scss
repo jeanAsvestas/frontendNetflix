@@ -26,12 +26,15 @@
         margin-right: 40px;
       }
 
-      span {
-        margin-right: 20px;
-        cursor: pointer;
-      }
     }
-
+    
+    span,
+    a {
+      margin-right: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+    }
     .right {
       display: flex;
       align-items: center;
@@ -48,16 +51,16 @@
         object-fit: cover;
         cursor: pointer;
       }
-
+      
       .profile {
+        
         .options {
           display: none;
           background-color: var(--main-color);
           border-radius: 7px;
         }
 
-        span {
-          padding: 10px;
+        a {
           cursor: pointer;
         }
 
