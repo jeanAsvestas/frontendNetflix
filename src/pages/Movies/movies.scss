@@ -11,22 +11,22 @@ main {
 
 
   .card {
-    background-color: var(--main-color);
-    margin-right: 5px;
+    background-color: white;
     cursor: pointer;
     color: white;
 
     .listItem {
+      width: 400px;
+      height: 225px;
 
       img {
-        object-fit: cover;
+        object-fit:cover;
       }
 
-
       &:hover {
-        width: 475px;
+        width: 425px;
         height: 425px;
-        left: -60px;
+        left: -70px;
         position: absolute;
 
         .itemInfo {

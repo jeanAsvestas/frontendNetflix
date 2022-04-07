@@ -32,7 +32,7 @@ export default function ListItem({ index, props }) {
 
     >
       <img
-        src="https://www.homecinemachoice.com/images/styles/600_wide/public/scarface%2001.jpg"
+        src={`./images/${props?.titleImage}`}
         alt=""
       />
       {isHovered && (
