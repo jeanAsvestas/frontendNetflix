@@ -2,6 +2,8 @@ import "./addmovie.scss";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import MovieService from "../../../../services/movie_service";
+import Sidebar from "../../../../components/admin-components/sidebar/Sidebar"
+import NavbarAdmin from "../../../../components/admin-components/navbar-admin/Navbar-admin"
 
 // var fs = require('fs');
 // fs.writeFile(`./public/images/${data.mainImage.name}`, data.mainImage.data);
@@ -22,6 +24,10 @@ export default function AddMovie() {
 
     console.log(errors.description)
     return (
+        <div>
+            <NavbarAdmin />
+            <Sidebar />
+
         <div className="add-movie">
             <form onSubmit={handleSubmit(handleAddMovie, handleError)}>
                 <h1>Add Movie</h1>
@@ -87,6 +93,7 @@ export default function AddMovie() {
                     Add movie</button>
 
             </form>
+        </div>
         </div>
     )
 }
