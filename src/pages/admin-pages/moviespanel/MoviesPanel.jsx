@@ -1,7 +1,8 @@
 import "./MoviesPanel.scss"
+import { Link } from "react-router-dom";
 import Sidebar from "../../../components/admin-components/sidebar/Sidebar"
 import NavbarAdmin from "../../../components/admin-components/navbar-admin/Navbar-admin"
-import Datatable from "../../../components/admin-components/datatable-movies/Datatable-movies"
+import DatatableMovies from "../../../components/admin-components/datatable-movies/Datatable-movies"
 
 function ListAdmin() {
   return (
@@ -9,10 +10,10 @@ function ListAdmin() {
       <Sidebar />
       <div className="listAdminContainer">
         <NavbarAdmin />
-        <Datatable />
+        <DatatableMovies />
 
+        <Link to="/admin/moviespanel/addmovie">Add Movie</Link>
       </div>
-      {/* <Link to="/admin/moviespanel/addmovie">Add Movie</Link> */}
     </div>
   )
 }

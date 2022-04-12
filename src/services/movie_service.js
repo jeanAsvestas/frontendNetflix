@@ -25,11 +25,18 @@ const getOneMovie = (movieId) => {
         })
 }
 
+const addOneMovie = (movie) => {
+    return axios.post(API_URL + 'add', { movie })
+        .then((res) => {
+            return res.data;
+        })
+}
 
 let MovieService = {
     getLastMovies,
     getMoviesByGenre,
-    getOneMovie
+    getOneMovie,
+    addOneMovie
 };
 
 export default MovieService;

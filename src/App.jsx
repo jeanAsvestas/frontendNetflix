@@ -13,7 +13,7 @@ import AdminPage from './pages/admin-pages/admin/Admin';
 import ListAdmin from './pages/admin-pages/list/List';
 import Single from './pages/admin-pages/single/Single';
 import Moviespanel from "./pages/admin-pages/moviespanel/MoviesPanel";
-import AddMovie from "./pages/admin-pages/moviespanel/AddMovie";
+import AddMovie from "./pages/admin-pages/moviespanel/addmovie/AddMovie";
 
 
 
@@ -43,9 +43,10 @@ const App = () => {
       <Route exact path="/movies" element={<Movies />} />
 
       <Route path="/admin">
-        <Route index element={<AdminPage />} />
-        <Route path="moviespanel" element={<Moviespanel />} >
-          {/* <Route path="addmovie" element={<AddMovie />} /> */}
+        <Route index element={<AdminPage />} />        
+        <Route path="moviespanel">
+          <Route index element={<Moviespanel />} />
+          <Route path="addmovie" element={<AddMovie />} />
         </Route>
         <Route path="users">
           <Route index element={<ListAdmin />} />
