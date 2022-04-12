@@ -1,10 +1,21 @@
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from "@material-ui/icons"
-import { useRef , useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import ListItem from "../listItem/ListItem"
 import "./list.scss"
+import MovieService from "../../services/movie_service"
 
-export default function List() {
+export default function List(props) {
+  const [movies, setMovies] = useState(props.props);
+  useEffect(() => {
+    console.log('list -=-=-==-=-')
+    console.log(movies)
 
+  }, [movies]);
+
+
+  // console.log(horrorMovies)
+  // console.log(adventureMovies)
+  // console.log(dramaMovies)
   const[slideNumber, setSlideNumber] = useState(0)
   const listRef = useRef()
 
@@ -29,8 +40,18 @@ export default function List() {
             className="sliderArrow left" 
             onClick={() => handleClick("left")}/>
             <div className="container2" ref={listRef}>
-                <ListItem index={0}/>
-                <ListItem index={1}/>
+          {movies && movies.map((movie, index) => {
+            return (
+
+              <ListItem index={index} props={movie} />
+
+            )
+          })
+          }
+
+
+          {/* <ListItem index={0} props={movies[0]} /> */}
+          {/* <ListItem index={1}/>
                 <ListItem index={2}/>
                 <ListItem index={3}/>
                 <ListItem index={4}/>
@@ -40,7 +61,7 @@ export default function List() {
                 <ListItem index={8}/>
                 <ListItem index={9}/>
                 <ListItem index={10}/>
-                <ListItem index={11}/>
+                <ListItem index={11}/> */}
                 </div>
             <ArrowForwardIosOutlined className="sliderArrow right" onClick={() => handleClick("right")}/>
             </div>

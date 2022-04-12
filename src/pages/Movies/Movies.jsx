@@ -10,7 +10,6 @@ const Movies = () => {
         })
 
     }, []);
-
     const handleChange = async (e) => {
         setMovies(await MovieService.getMoviesByGenre(e.target.value))
     }
@@ -46,7 +45,8 @@ const Movies = () => {
                 <div className="container">
 
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        {movies?.map((movie, index) => {
+                        {/* {movies?    : spinner} */}
+                        {movies && movies.map((movie, index) => {
                             return (
                                 <div className="col" key={movie.id}>
                                     <div className="card shadow-sm" >

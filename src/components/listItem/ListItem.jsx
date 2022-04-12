@@ -5,7 +5,7 @@ import {
   ThumbUpAltOutlined,
   ThumbDownOutlined,
 } from "@material-ui/icons";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 
 
@@ -19,6 +19,11 @@ export default function ListItem({ index, props }) {
     navigate(`/watch/${listItem.current.id}`);
   };
 
+  // useEffect(() => {
+  //   console.log('ListItem-=-==-=-=-')
+  //   console.log(props)
+
+  // }, []);
 
   const [isHovered, setIsHovered] = useState(false);
   const trailer =
@@ -37,7 +42,14 @@ export default function ListItem({ index, props }) {
       />
       {isHovered && (
         <div >
-          <video src={trailer} autoPlay={true} loop />
+          <iframe className='videosTrailer'
+            width="885"
+            height="498"
+            src={`https://www.youtube.com/embed/${props?.movieContent}?autoplay=1&mute=1`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="autoplay"
+            allowFullScreen></iframe>
           <div className="itemInfo">
             <div className="icons">
               <PlayArrow onClick={watch} className="icon" type="PlayArrow"></PlayArrow>
