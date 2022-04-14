@@ -10,7 +10,19 @@ const Datatable = () => {
   const [data, setData] = useState(userRows);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    console.log(id);
+    if (window.confirm(`Do you want to delete movie with id: ${id}?`)) {
+      MovieService.deleteMovie(id)
+        .then((res) => {
+          alert(res.message);
+        }).catch(err => {
+          alert(err.message);
+        })
+    } else {
+      console.log("You pressed Cancel!");
+    }
+
+    // setData(data.filter((item) => item.id !== id));
   };
 
   const [movies, setMovies] = useState();
@@ -21,7 +33,7 @@ const Datatable = () => {
 
   }, []);
 
-  console.log(movies)
+  //console.log(movies)
 
 
 
@@ -31,9 +43,10 @@ const Datatable = () => {
       headerName: "Action",
       width: 200,
       renderCell: (params) => {
+        //console.log(params)
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={`/admin/moviespanel/editmovie/${params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div

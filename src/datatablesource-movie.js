@@ -8,8 +8,8 @@ export const userColumns = [
     renderCell: (params) => {
       return (
 
-        <div className="cellWithImg" onClick={console.log(params)}>
-          <img className="cellImg" src={`./images/${params.row.titleImage}`} alt="avatar" />
+        <div className="cellWithImg" >
+          {/* <img className="cellImg" src={`./images/${params.row.titleImage}`} alt="avatar" /> */}
           {params.row.title}
         </div>
       );

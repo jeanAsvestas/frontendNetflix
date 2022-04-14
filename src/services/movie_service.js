@@ -31,12 +31,26 @@ const addOneMovie = (movie) => {
             return res.data;
         })
 }
+const editMovie = (movie) => {
+    return axios.post(API_URL + 'update', { movie })
+        .then((res) => {
+            return res.data;
+        })
+}
+const deleteMovie = (id) => {
+    return axios.post(API_URL + 'delete', { id })
+        .then((res) => {
+            return res.data;
+        })
+}
 
 let MovieService = {
     getLastMovies,
     getMoviesByGenre,
     getOneMovie,
-    addOneMovie
+    addOneMovie,
+    editMovie,
+    deleteMovie
 };
 
 export default MovieService;

@@ -56,7 +56,7 @@ export default function Login() {
       <div className="container">
         <form onSubmit={handleSubmit(handleLogin, handleError)}>
           <h1>Sign In</h1>
-          <input type="email" placeholder="Email"
+          <input type="email" placeholder="Email" 
             //ref={emailRef}
             {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
           />

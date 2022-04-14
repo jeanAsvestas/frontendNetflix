@@ -3,7 +3,7 @@ import "./app.scss"
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/navbar/Navbar"
 import Home from "./pages/Homepage/Home"
-import { Routes, Route, } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../src/pages/Login/Login"
 import Watch from "./pages/watch/Watch"
 import Register from "./pages/Register/Register"
@@ -14,6 +14,8 @@ import ListAdmin from './pages/admin-pages/list/List';
 import Single from './pages/admin-pages/single/Single';
 import Moviespanel from "./pages/admin-pages/moviespanel/MoviesPanel";
 import AddMovie from "./pages/admin-pages/moviespanel/addmovie/AddMovie";
+import EditMovie from "./pages/admin-pages/moviespanel/editmovie/EditMovie";
+import Account from './pages/Account/Account';
 
 
 
@@ -37,6 +39,7 @@ const App = () => {
 <Route exact path="/login" element={<Login/>} />
 
 <Route exact path="/register" element={<Register/>} />
+      <Route exact path="/account" element={currentUser ? <Account props={currentUser} /> : <Navigate to='/login' />} />
 
       <Route exact path="/watch/:id" element={<Watch />} />
 
@@ -47,6 +50,7 @@ const App = () => {
         <Route path="moviespanel">
           <Route index element={<Moviespanel />} />
           <Route path="addmovie" element={<AddMovie />} />
+          <Route path="editmovie/:movieId" element={<EditMovie />} />
         </Route>
         <Route path="users">
           <Route index element={<ListAdmin />} />
