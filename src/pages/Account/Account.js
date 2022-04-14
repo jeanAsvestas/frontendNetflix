@@ -1,9 +1,6 @@
 import "./Account.scss"
 import { ArrowDropDown, PinDropSharp } from "@material-ui/icons"
-//import netflix_logo from "../../images/Netflix_2015_logo.svg.png"
-//import profile_image from "../../images/pexels-photo-6899260.webp"
-//import image_member_since from "../../images/membersince.svg"
-//import image_card from "../../images/mastercard-v2.svg"
+
 import React, { useState, useEffect } from "react";
 import AuthService from "../../services/auth_service";
 import { useNavigate } from "react-router-dom";
@@ -30,8 +27,8 @@ function Account(props) {
                 <div className="container-footer">
                     {/* <img className="netflix-logo" src={netflix_logo} /> */}
                     <div className="profile">
-                        {/* <img className="profile-image" src={profile_image} */}
-                        {/* alt="" /> */}
+                        {/* <img className="profile-image" src={profile_image}/> */}
+                      
                         <div className="profile-dropdown">
                             <ArrowDropDown className="icon" />
                             <div className="options">
@@ -43,7 +40,7 @@ function Account(props) {
                 </div>
                 <div className="account-info">
                     <h2 className="account-title">Account</h2>
-                    {/* <img className="member-since-image" src={image_member_since} /> */}
+                    <img className="member-since-image" src="./images/membersince.svg" />
                     <small className="member-since">Member Since October 2019</small>
                 </div>
                 <div className="membership-billing-content">
@@ -66,7 +63,7 @@ function Account(props) {
                         </div>
                         <div className="card-info">
                             <div className="user-card-info">
-                                {/* <img className="user-card" src={image_card} /> */}
+                                <img className="user-card" src="./images/mastercard-v2.svg" />
                                 <p className="user-card-number"><b>**** **** **** 1018</b></p>
                             </div>
                             <div className="payment-info">
@@ -99,3 +96,13 @@ function Account(props) {
 }
 
 export default Account;
+
+
+{/* <img src={myIcon} alt="icon" />
+
+
+import myIcon from './relative/path/to/icon.svg'
+
+
+<img src={require('/images/image-name.png')}  */}
+
