@@ -5,6 +5,8 @@ import List from "../../components/list/List"
 import { useEffect, useState } from "react";
 import MovieService from '../../services/movie_service'
 
+const categoriesFeatured = ['adventure', 'horror', 'comedy'];
+
 const Home = (props) => {
   const [movies, setMovies] = useState();
   const [adventureMovies, setAdventureMovies] = useState();

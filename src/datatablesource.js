@@ -3,12 +3,12 @@ export const userColumns = [
   {
     field: "user",
     headerName: "User",
-    width: 230,
+    width: 330,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          <img className="cellImg" src=".././images/avatar.jpg" alt="avatar" />
+          {`${params.row.firstName} ${params.row.lastName}`}
         </div>
       );
     },
@@ -17,13 +17,7 @@ export const userColumns = [
     field: "email",
     headerName: "Email",
     width: 230,
-  },
-
-  {
-    field: "age",
-    headerName: "Age",
-    width: 100,
-  },
+  }
 ];
 
 //temporary data
