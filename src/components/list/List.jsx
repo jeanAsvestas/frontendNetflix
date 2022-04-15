@@ -6,7 +6,12 @@ import MovieService from "../../services/movie_service"
 
 export default function List(props) {
   const [movies, setMovies] = useState(props.props);
+
+  
+  
+
   useEffect(() => {
+   
     console.log('list -=-=-==-=-')
     console.log(movies)
 
@@ -17,7 +22,13 @@ export default function List(props) {
   // console.log(adventureMovies)
   // console.log(dramaMovies)
   const[slideNumber, setSlideNumber] = useState(0)
+  // const [movieCategory, setMovieCategory] = useState("");
   const listRef = useRef()
+
+  // const categoriesFeatured = ['adventure', 'horror', 'comedy'];
+  // categoriesFeatured.forEach((element) => {
+  //    element == "adventure" ? setMovieCategory(element) : element = "horror" ? setMovieCategory(element) : setMovieCategory(element);
+  // })
 
   const handleClick = (direction) => { 
     let distance = listRef.current.getBoundingClientRect().x - 50
@@ -32,9 +43,13 @@ export default function List(props) {
     }
   }
   
+  //  const categoriesFeatured = ['adventure', 'horror', 'comedy'];
+
+
   return (
+
     <div className="list">
-        <span className="listTitle">Continue to watch</span>
+        <span className="listTitle">{movies[0]?.Categories.title}</span>
         <div className="wrapper">
             <ArrowBackIosOutlined 
             className="sliderArrow left" 
@@ -66,5 +81,5 @@ export default function List(props) {
             <ArrowForwardIosOutlined className="sliderArrow right" onClick={() => handleClick("right")}/>
             </div>
     </div>
-  )
+    )
 }

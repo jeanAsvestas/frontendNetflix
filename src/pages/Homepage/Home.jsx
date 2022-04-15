@@ -5,6 +5,7 @@ import List from "../../components/list/List"
 import { useEffect, useState } from "react";
 import MovieService from '../../services/movie_service'
 
+
 const categoriesFeatured = ['adventure', 'horror', 'comedy'];
 
 const Home = (props) => {
@@ -12,18 +13,33 @@ const Home = (props) => {
   const [adventureMovies, setAdventureMovies] = useState();
   const [horrorMovies, setHorrorMovies] = useState();
   const [comedyMovies, setComedyMovies] = useState();
+  
+
+  const moviesCategories = [adventureMovies, horrorMovies, comedyMovies];
+  
+
+
+
   useEffect(() => {
-    MovieService.getMoviesByGenre("adventure").then((res) => {
-      setAdventureMovies(res)
-    })
-    MovieService.getMoviesByGenre("horror").then((res) => {
-      setHorrorMovies(res)
-    })
-    MovieService.getMoviesByGenre("comedy").then((res) => {
-      setComedyMovies(res)
+    // MovieService.getMoviesByGenre("adventure").then((res) => {
+    //   setAdventureMovies(res)
+    // })
+    // MovieService.getMoviesByGenre("horror").then((res) => {
+    //   setHorrorMovies(res)
+    // })
+    // MovieService.getMoviesByGenre("comedy").then((res) => {
+    //   setComedyMovies(res)
+    // })
+
+    categoriesFeatured.forEach(category => {
+      MovieService.getMoviesByGenre(category).then((res) => {
+        category == "adventure" ? setAdventureMovies(res) : category == "horror" ? setHorrorMovies(res) : setComedyMovies(res);
+      })
     })
 
   }, []);
+
+ 
 
 
   // const [adventureMovies, setAdventureMovies] = useState();
@@ -32,13 +48,28 @@ const Home = (props) => {
   return (
     <div className="home">
       {/* <Navbar props={props.props} /> */}
-          <Featured type="movie"/>
-      {adventureMovies && <List props={adventureMovies} />}
-      {horrorMovies && <List props={horrorMovies} />}
-      {comedyMovies && <List props={comedyMovies} />}
+      <Featured type="movie" />
+      {
 
-      </div>
+
+        moviesCategories.map(category => {
+          console.log("kjhdskdksksnksdnk")
+          console.log(category)
+          console.log(adventureMovies)
+          return (category && <List props={category} />)
+        })
+
+
+
+      }
+
+      {/* {adventureMovies && <List props={adventureMovies} />}
+        {horrorMovies && <List props={horrorMovies} />}
+        {comedyMovies && <List props={comedyMovies} />} */}
+
+    </div>
   );
 };
 
 export default Home;
+
