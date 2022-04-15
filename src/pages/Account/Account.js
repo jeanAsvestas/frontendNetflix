@@ -49,7 +49,9 @@ function Account(props) {
                 </div>
                 <div className="account-info">
                     <h2 className="account-title">Account</h2>
-                    <img className="member-since-image" src="./images/membersince.svg" />
+
+                    <img className="member-since-image" src=".././images/membersince.svg" />
+
                     <small className="member-since">Member Since October 2019</small>
                 </div>
                 <div className="membership-billing-content">
@@ -72,7 +74,10 @@ function Account(props) {
                         </div>
                         <div className="card-info">
                             <div className="user-card-info">
-                                <img className="user-card" src="./images/mastercard-v2.svg" />
+
+                                <img className="user-card" src=".././images/mastercard-v2.svg" />
+                              
+
                                 <p className="user-card-number"><b>**** **** **** 1018</b></p>
                             </div>
                             <div className="payment-info">
