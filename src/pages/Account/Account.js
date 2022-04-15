@@ -5,6 +5,15 @@ import React, { useState, useEffect } from "react";
 import AuthService from "../../services/auth_service";
 import { useNavigate } from "react-router-dom";
 
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
+const initialOptions = {
+    "client-id": "sb",
+    currency: "EUR",
+    intent: "capture",
+    "data-client-token": "abc123xyz==",
+};
+
 function Account(props) {
 
     // const [currentUsers, setCurrentUsers] = useState(undefined);
@@ -89,6 +98,9 @@ function Account(props) {
                         </div>
                     </div>
                 </div>
+                <PayPalScriptProvider options={initialOptions}>
+                    <PayPalButtons style={{ layout: "horizontal" }} />
+                </PayPalScriptProvider>
             </div>
 
         </div>
