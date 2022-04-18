@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./app.scss"
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/navbar/Navbar"
 import Home from "./pages/Homepage/Home"
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Fragment } from "react-router-dom";
 import Login from "../src/pages/Login/Login"
 import Watch from "./pages/watch/Watch"
 import Register from "./pages/Register/Register"
@@ -16,60 +17,69 @@ import Moviespanel from "./pages/admin-pages/moviespanel/MoviesPanel";
 import AddMovie from "./pages/admin-pages/moviespanel/addmovie/AddMovie";
 import EditMovie from "./pages/admin-pages/moviespanel/editmovie/EditMovie";
 import Account from './pages/Account/Account';
+import ProtectedRoute from './ProtectedRoute';
+import Plans from './pages/Plans/Plans';
 
 
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+  //const [isAdmin, setIsAdmin] = useState(false);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
     if (user) {
       setCurrentUser(user);
     }
   }, []);
+  console.log(currentUser)
+  // useEffect(() => {
+  //   if (currentUser?.isAdmin) {
+  //     console.log("22222")
+  //     setIsAdmin(true);
+  //   }
+  //   console.log(currentUser);
+  //   console.log(isAdmin);
+  // }, [currentUser]);
 
-  return <div>
+
+  return <>
     <Navbar props={currentUser} />
 
 
-  <Routes>
+    <Routes>
 
-      <Route exact path={"/"} element={<Home props={currentUser} />} />
+      <Route exact path="/" element={<Home />} />
 
-<Route exact path="/login" element={<Login/>} />
+      <Route exact path="/login" element={!currentUser ? <Login /> : <Navigate to='/' />} />
 
-<Route exact path="/register" element={<Register/>} />
-      <Route exact path="/account" element={currentUser ? <Account props={currentUser} /> : <Navigate to='/login' />} />
-
-      <Route exact path="/watch/:id" element={<Watch />} />
+      <Route exact path="/register" element={!currentUser ? <Register /> : <Navigate to='/' />} />
+      <Route exact path="/account" element={currentUser ? <Account props={currentUser} /> : <Navigate to='/' />} />
+      <Route exact path="/watch/:id" element={currentUser ? <Watch /> : <Navigate to='/login' />} />
+      <Route exact path="/plans" element={currentUser ? <Plans props={currentUser} /> : <Navigate to='/login' />} />
 
       <Route exact path="/movies" element={<Movies />} />
+      {/* <Route exact path="/admin" element={isAdmin ? <AdminPage /> : <Navigate to='/' />} /> */}
 
-      <Route path="/admin">
-        <Route index element={<AdminPage />} />        
-        <Route path="moviespanel">
+
+      <Route element={<ProtectedRoute admin={currentUser?.isAdmin} />}>
+
+        <Route exact path="/admin"  >
+          <Route index element={<AdminPage />} />
+          <Route path="moviespanel">
           <Route index element={<Moviespanel />} />
-          <Route path="addmovie" element={<AddMovie />} />
-          <Route path="editmovie/:movieId" element={<EditMovie />} />
+            <Route path="addmovie" element={<AddMovie />} />
+            <Route path="editmovie/:movieId" element={<EditMovie />} />
         </Route>
-        <Route path="users">
+          <Route path="users">
           <Route index element={<ListAdmin />} />
-          <Route path=":userId" element={<Single />} />
+            <Route path=":userId" element={<Single />} />
         </Route>
       </Route>
-
-
-{/* /* <Route exact path="/profile" element={<Profile/>} />  
-
-/* <Route path="/user" component={BoardUser} />
-
-<Route path="/mod" component={BoardModerator} />
-
-<Route path="/admin" component={BoardAdmin} />   */}
-
-</Routes>
-  </div>
+      </Route>
+    </Routes>
+  </>
 
 };
+
 
 export default App;

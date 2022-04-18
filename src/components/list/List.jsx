@@ -10,12 +10,12 @@ export default function List(props) {
   
   
 
-  useEffect(() => {
-   
-    console.log('list -=-=-==-=-')
-    console.log(movies)
+  // useEffect(() => {
 
-  }, [movies]);
+  //   console.log('list -=-=-==-=-')
+  //   console.log(movies)
+
+  // }, [movies]);
 
 
   // console.log(horrorMovies)
@@ -49,7 +49,7 @@ export default function List(props) {
   return (
 
     <div className="list">
-        <span className="listTitle">{movies[0]?.Categories.title}</span>
+      <span className="listTitle">{movies[0]?.Categories[0].title}</span>
         <div className="wrapper">
             <ArrowBackIosOutlined 
             className="sliderArrow left" 
@@ -58,7 +58,7 @@ export default function List(props) {
           {movies && movies.map((movie, index) => {
             return (
 
-              <ListItem index={index} props={movie} />
+              <ListItem index={index} props={movie} key={index} />
 
             )
           })

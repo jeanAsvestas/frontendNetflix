@@ -5,8 +5,8 @@ import {
   ThumbUpAltOutlined,
   ThumbDownOutlined,
 } from "@material-ui/icons";
-import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function ListItem({ index, props }) {

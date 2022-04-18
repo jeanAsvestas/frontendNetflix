@@ -1,11 +1,14 @@
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss"
 import AuthService from "../../services/auth_service";
+import { ClickAwayListener } from "@material-ui/core";
 
 
 const Navbar = (props) => {
+
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   window.onscroll = () => {
@@ -16,12 +19,13 @@ const Navbar = (props) => {
   const logout = () => {
     AuthService.logout().then(
       () => {
+        console.log("logout")
         navigate("/");
-        window.location.reload();
+        // window.location.reload();
       }
     )
   }
-
+  // console.log(props.props)
   return (
     <div className={isScrolled ? "navbar2 scrolled" : "navbar2"}>
       <div className="container2 ">
@@ -42,19 +46,23 @@ const Navbar = (props) => {
               <Notifications className="icon"/>
               <img src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
                alt="" />
-          {props.props ?
+          {currentUser ?
             (
               <div className="profile ">
                 <ArrowDropDown className="icon" />
                <div className="options">
                   <Link to='/account' >Settings</Link>
                   <Link to="/" onClick={logout} >Logout</Link>
+                  {currentUser.isAdmin ? (<Link to='/admin' >Admin Panel</Link>)
+                    :
+                    (null)}
                 </div>
               </div>)
             :
             (<div className="profile ">
               <Link to="/login">Login</Link>
               <Link to="/register">Register</Link>
+
             </div>)
           }
            </div>

@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+const Login = () => {
 
 
   // const [email,setEmail] = useState("")
@@ -25,10 +25,10 @@ export default function Login() {
   const [err, setErr] = useState();
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     //console.log(data)
     console.log(e)
-    AuthService.login(e.email, e.password).then(res => {
+    await AuthService.login(e.email, e.password).then(res => {
       navigate('/')
       window.location.reload();
     },
@@ -46,7 +46,7 @@ export default function Login() {
 
 
  
-  return (
+  return ( 
     
     <div className="login">
       <div className="top">
@@ -82,3 +82,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login;

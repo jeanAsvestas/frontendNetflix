@@ -1,29 +1,39 @@
 import "./Account.scss"
 import { ArrowDropDown, PinDropSharp } from "@material-ui/icons"
+import CreditPayment from "../../components/credit-payment/credit.payment";
 
 import React, { useState, useEffect } from "react";
 import AuthService from "../../services/auth_service";
 import { useNavigate } from "react-router-dom";
 
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+// import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const initialOptions = {
-    "client-id": "sb",
-    currency: "EUR",
-    intent: "capture",
-    "data-client-token": "abc123xyz==",
-};
+// const initialOptions = {
+//     "client-id": "sb",
+//     currency: "EUR",
+//     intent: "capture",
+//     "data-client-token": "abc123xyz==",
+// };
 
 function Account(props) {
+    const navigate = useNavigate();
+    //const [currentUsers, setCurrentUsers] = useState(undefined);
+    useEffect(() => {
+        console.log(props);
+        const user = AuthService.getCurrentUser();
+        // if (user) {
+        //     setCurrentUsers(user);
+        // }
 
-    // const [currentUsers, setCurrentUsers] = useState(undefined);
-    // useEffect(() => {
-    //     const user = AuthService.getCurrentUser();
-    //     if (user) {
-    //         setCurrentUsers(user);
-    //     }
-    // }, []);
-    // const navigate = useNavigate();
+        // if (user.isAdmin) {
+        //     navigate("/admin");
+        // }
+        // const user = AuthService.getCurrentUser();
+        // if (user) {
+        //     setCurrentUsers(user);
+        // }
+    }, []);
+
     // const handleNoUsers = () => {
     //     navigate("/login");
     //     window.location.reload();
@@ -101,11 +111,11 @@ function Account(props) {
                         <div className="change-plan">
                             <a className="change-plan-link">Change plan</a>
                         </div>
-                    </div>
+                    </div><CreditPayment />
                 </div>
-                <PayPalScriptProvider options={initialOptions}>
+                {/* <PayPalScriptProvider options={initialOptions}>
                     <PayPalButtons style={{ layout: "horizontal" }} />
-                </PayPalScriptProvider>
+                </PayPalScriptProvider> */}
             </div>
 
         </div>
