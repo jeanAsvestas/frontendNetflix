@@ -4,6 +4,7 @@ import { useState,useRef } from "react";
 import AuthService from "../../services/auth_service";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 
 const Login = () => {
 
@@ -46,7 +47,7 @@ const Login = () => {
 
  
   return ( 
-     
+    <>
     <div className="login">
 
       
@@ -78,7 +79,8 @@ const Login = () => {
         </form>
       </div>
     </div>
-
+      {/* <Footer /> */}
+    </>
   );
 }
 

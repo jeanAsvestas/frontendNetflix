@@ -19,15 +19,15 @@ export default function Register() {
   return (
     <div className="register">
       <Navbar />
-      <div className="top">
+      {/* <div className="top">
         <div className="wrapper">
 
           <Link to="/login" >Sign in
 
           </Link>
          </div>
-      </div>
-      <div className="container">
+      </div> */}
+      <div className="container container-main">
         <h1>Unlimited movies, TV Shows and more.</h1>
         <h2>Watch everywhere, Cancel anytime.</h2>
         <p>Ready to Watch? Enter your e-mail to to create your membership!</p>

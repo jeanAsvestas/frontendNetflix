@@ -19,6 +19,7 @@
     align-items: center;
     justify-content: space-between;
     height: 70px;
+    
 
     .left {
       display: flex;
@@ -40,8 +41,10 @@
     .right {
       display: flex;
       align-items: center;
+      color: white;
 
       .icon {
+        
         margin: 0px 15px;
         cursor: pointer;
       }
@@ -54,12 +57,13 @@
         cursor: pointer;
       }
       
+      
       .profile {
-        
         .options {
           display: none;
           background-color: var(--main-color);
           border-radius: 7px;
+          padding-left: 5px;
         }
 
         a {

@@ -4,6 +4,7 @@ import "./home.scss"
 import List from "../../components/list/List"
 import { useEffect, useState } from "react";
 import MovieService from '../../services/movie_service'
+import Footer from "../../components/footer/Footer";
 
 
 const categoriesFeatured = ['adventure', 'horror', 'comedy'];
@@ -33,6 +34,7 @@ const Home = (props) => {
       {moviesCategories.map((category, index) => {
         return (category && <List props={category} key={index} />)
       })}
+      <Footer />
     </div>
   );
 };
