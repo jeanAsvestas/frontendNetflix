@@ -1,67 +1,21 @@
 .account-page {
     box-sizing: border-box;
 
+
 .navbar {
     background-color: black;
 }
-// .container-footer {
-//     // width: 100%;
-//     // height: 70px;
-//     // padding-left: 50px;
-//     // padding-right: 100px;
-//     // background-color: black;
-//     // display: flex;
-//     // flex-direction: row;
-//     // align-items: center;
-//     // justify-content: space-between;
-//         .profile {
-//             display: flex;
-//         }
-//             .netflix-logo {
-//               height: 35px;
-//              }
-//              .profile-image {
-//                  height: 30px;
-//                  width: 30px;
-//                  cursor: pointer;
-//                  border-radius: 5px;
-//              }
 
-//              .profile-dropdown {
-//                  .icon {
-//                      color: white;
-//                  }
-//                 .options {
-//                   display: none;
-//                   background-color: black;
-//                   color: white;
-//                   border-radius: 7px;
-//                 }
-        
-//                 span {
-//                   padding: 10px;
-//                   cursor: pointer;
-//                 }
-        
-//                 &:hover {
-//                   .options {
-//                     display: flex;
-//                     flex-direction: column;
-//                     position: absolute;
-//                   }
-            
-//                 }
-//             }
 
-// }
 .main {
     margin-top: 10vh;
 }
 
+
 .account-info {
     max-width: 60%;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 80px;
     border-bottom: 1px solid black;
     height: 70px;
     display: flex;

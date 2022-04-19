@@ -23,16 +23,16 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
-          <li><DashboardIcon className="icon" />
-            <span>DashBoard</span>
+          <li><Link to='/admin'><DashboardIcon className="icon" />
+            <span>DashBoard</span></Link>
           </li>
-          <li><HomeOutlinedIcon className="icon" />
-            <span>Home</span>
+          <li><Link to='/'><HomeOutlinedIcon className="icon" />
+            <span>Home</span></Link>
           </li>
           <p className="title">COMPONENTS</p>
           <li>
-            <PersonOutlineOutlinedIcon className="icon" />
-            <span>Users</span>
+            <Link to='/admin/users'><PersonOutlineOutlinedIcon className="icon" />
+              <span>Users</span></Link>
           </li>
           <li><Link to='/admin/moviespanel'><MovieIcon className="icon" /><span>Movies</span></Link>
 
@@ -57,11 +57,11 @@ const Sidebar = () => {
             <span>Feedback</span>
           </li>
           <p className="title">USER</p>
-          <li><AdminPanelSettingsOutlinedIcon className="icon" />
-            <span>Profile</span>
+          <li><Link to='/account'><AdminPanelSettingsOutlinedIcon className="icon" />
+            <span>Profile</span></Link>
           </li>
-          <li><ExitToAppOutlinedIcon className="icon" />
-            <span>Logout</span>
+          <li><Link to='/logout'><ExitToAppOutlinedIcon className="icon" />
+            <span>Logout</span></Link>
           </li>
         </ul>
       </div>

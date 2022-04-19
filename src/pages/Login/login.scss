@@ -1,5 +1,3 @@
-
-
 .login {
   display: flex;
   flex-direction: column;
@@ -14,18 +12,18 @@
   background-size: cover;
   position: relative;
 
-  .top {
-    .wrapper {
-      padding: 20px 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+  // .top {
+  //   .wrapper {
+  //     padding: 20px 50px;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: space-between;
 
-      .logo {
-        height: 40px;
-      }
-    }
-  }
+  //     .logo {
+  //       height: 40px;
+  //     }
+  //   }
+  // }
 
   
 
@@ -85,5 +83,7 @@
     }
   }
 }
+
+
 
 

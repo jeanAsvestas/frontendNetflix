@@ -6,6 +6,7 @@ import CreditPayment from "../../components/credit-payment/credit.payment";
 import React, { useState, useEffect } from "react";
 import AuthService from "../../services/auth_service";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
 
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
@@ -48,6 +49,24 @@ function Account(props) {
 
 
 
+
+
+            <div>
+                <Navbar />
+                {/* <div className="container-footer">
+                    {/* <img className="netflix-logo" src={netflix_logo} /> */}
+                {/* <div className="profile"> */}
+                        {/* <img className="profile-image" src={profile_image}/> */}
+                      
+                {/* <div className="profile-dropdown">
+                            <ArrowDropDown className="icon" />
+                            <div className="options">
+                                <span>Settings</span>
+                                <span>Log out</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> */} 
 
                 <div className="account-info">
                     <h2 className="account-title">Account</h2>
