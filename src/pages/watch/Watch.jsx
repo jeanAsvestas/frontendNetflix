@@ -1,12 +1,14 @@
 import { ArrowBackOutlined } from '@material-ui/icons'
 import "./watch.scss"
 import MovieService from '../../services/movie_service'
+import AuthService from '../../services/auth_service';
 import { useEffect, useState } from "react";
 
 export default function Watch() {
   const [movie, setMovie] = useState();
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   useEffect(() => {
-    MovieService.getOneMovie(window.location.pathname.split('/')[2]).then((res) => {
+    MovieService.getOneMovie(currentUser.id, window.location.pathname.split('/')[2]).then((res) => {
       setMovie(res)
     })
 

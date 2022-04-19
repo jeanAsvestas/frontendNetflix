@@ -37,7 +37,7 @@ export default function ListItem({ index, props }) {
 
     >
       <img
-        src={`./images/${props?.titleImage}`}
+        src={`.././images/${props?.titleImage}`}
         alt=""
       />
       {isHovered && (

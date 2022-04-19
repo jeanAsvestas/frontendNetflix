@@ -19,6 +19,7 @@ import EditMovie from "./pages/admin-pages/moviespanel/editmovie/EditMovie";
 import Account from './pages/Account/Account';
 import ProtectedRoute from './ProtectedRoute';
 import Plans from './pages/Plans/Plans';
+import MyMovies from './pages/MyMovies/MyMovies';
 
 
 
@@ -57,6 +58,7 @@ const App = () => {
       <Route exact path="/register" element={!currentUser ? <Register /> : <Navigate to='/' />} />
       <Route exact path="/account" element={currentUser ? <Account props={currentUser} /> : <Navigate to='/' />} />
       <Route exact path="/watch/:id" element={currentUser ? <Watch /> : <Navigate to='/login' />} />
+      <Route exact path="/mylist/:id" element={currentUser ? <MyMovies /> : <Navigate to='/login' />} />
       <Route exact path="/plans" element={currentUser ? <Plans props={currentUser} /> : <Navigate to='/login' />} />
 
       <Route exact path="/movies" element={<Movies />} />

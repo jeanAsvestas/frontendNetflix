@@ -1,8 +1,12 @@
 import "./credit.payment.scss";
 import { useRef, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import { PayPalButton } from "react-paypal-button-v2";
+import { useNavigate } from "react-router-dom";
+import { convertLength } from "@mui/material/styles/cssUtils";
 
 const CreditPayment = () => {
+    const nav = useNavigate();
     //for vanilla bootstrap modal
     const modalRef = useRef();
     // const submitPayment = () => {
@@ -56,49 +60,25 @@ const CreditPayment = () => {
                     <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form >
-                        <Form.Group className="col-sm-12" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Credit Card Name Holder</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Full Name"
-                                ref={modalRef}
-                                onChange={CCnumber}
-                                size="18"
-                                maxLength="19"
-                                minLength="17"
-                            />
-                        </Form.Group>
-                        <Form.Group className="col-sm-12" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Credit Card Number</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Credit Card Number"
-                                ref={modalRef}
-                                onChange={CCnumber}
-                                size="18"
-                                maxLength="19"
-                                minLength="17"
+                    <PayPalButton
+                        amount="0.01"
+                        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+                        onSuccess={(details, data) => {
+                            console.log(details, data)
+                            alert("Transaction completed by ");
 
-                            />
-                        </Form.Group>
-                        <Form.Group className="col-sm-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
-                                type="email"
-                                placeholder="name@example.com"
-
-                            />
-                        </Form.Group>
-                        <Form.Group className="col-sm-12" controlId="exampleForm.ControlInput2">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
-                                type="email"
-                                placeholder="name@example.com"
-
-                            />
-                        </Form.Group>
-                    </Form>
+                            // OPTIONAL: Call your server to save the transaction
+                            return fetch("/paypal-transaction-complete", {
+                                method: "post",
+                                body: JSON.stringify({
+                                    orderId: data.orderID
+                                })
+                            });
+                        }}
+                        options={{
+                            clientId: "PRODUCTION_CLIENT_ID"
+                        }}
+                    />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -117,26 +97,46 @@ export default CreditPayment;
 
 
 
-{/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-Launch static backdrop modal
-</button>
+{/* <Form >
+<Form.Group className="col-sm-12" controlId="exampleForm.ControlInput1">
+    <Form.Label>Credit Card Name Holder</Form.Label>
+    <Form.Control
+        type="text"
+        placeholder="Full Name"
+        ref={modalRef}
+        onChange={CCnumber}
+        size="18"
+        maxLength="19"
+        minLength="17"
+    />
+</Form.Group>
+<Form.Group className="col-sm-12" controlId="exampleForm.ControlInput2">
+    <Form.Label>Credit Card Number</Form.Label>
+    <Form.Control
+        type="text"
+        placeholder="Credit Card Number"
+        ref={modalRef}
+        onChange={CCnumber}
+        size="18"
+        maxLength="19"
+        minLength="17"
 
+    />
+</Form.Group>
+<Form.Group className="col-sm-3" controlId="exampleForm.ControlInput2">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control
+        type="email"
+        placeholder="name@example.com"
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" ref={modalRef}>
-<div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            ...
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary"
-                onClick={submitPayment}>Understood</button>
-        </div>
-    </div>
-</div>
-</div> */}
+    />
+</Form.Group>
+<Form.Group className="col-sm-12" controlId="exampleForm.ControlInput2">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control
+        type="email"
+        placeholder="name@example.com"
+
+    />
+</Form.Group>
+</Form> */}

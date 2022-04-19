@@ -17,8 +17,8 @@ const getMoviesByGenre = (genre) => {
         })
 
 }
-const getOneMovie = (movieId) => {
-    return axios.get(API_URL + `watch/${movieId}`)
+const getOneMovie = (userId, movieId) => {
+    return axios.post(API_URL + `watch/${movieId}`, { userId: userId, movieId: movieId })
         .then((res) => {
             console.log(res.data)
             return res.data;
@@ -44,13 +44,21 @@ const deleteMovie = (id) => {
         })
 }
 
+const getMyMovies = (userId) => {
+    return axios.get(API_URL + `list/${userId}`, { userId })
+        .then((res) => {
+            return res.data;
+        })
+}
+
 let MovieService = {
     getLastMovies,
     getMoviesByGenre,
     getOneMovie,
     addOneMovie,
     editMovie,
-    deleteMovie
+    deleteMovie,
+    getMyMovies
 };
 
 export default MovieService;
