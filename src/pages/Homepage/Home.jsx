@@ -24,7 +24,11 @@ const Home = (props) => {
   }, []);
   return (
     <div className="home">
+
+     
+
       <Navbar />
+
       <Featured type="movie" />
       {moviesCategories.map((category, index) => {
         return (category && <List props={category} key={index} />)

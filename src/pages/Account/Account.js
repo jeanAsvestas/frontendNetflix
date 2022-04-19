@@ -1,4 +1,5 @@
 import "./Account.scss"
+import Navbar from "../../components/navbar/Navbar";
 import { ArrowDropDown, PinDropSharp } from "@material-ui/icons"
 import CreditPayment from "../../components/credit-payment/credit.payment";
 
@@ -41,7 +42,14 @@ function Account(props) {
     // }
 
     return (
+
         <div className="account-page">
+            <Navbar className="navbar" />
+            <div className="main">
+
+
+
+
 
             <div>
                 <Navbar />
@@ -59,6 +67,7 @@ function Account(props) {
                         </div>
                     </div>
                 </div> */} 
+
                 <div className="account-info">
                     <h2 className="account-title">Account</h2>
 
@@ -88,7 +97,7 @@ function Account(props) {
                             <div className="user-card-info">
 
                                 <img className="user-card" src=".././images/mastercard-v2.svg" />
-                              
+
 
                                 <p className="user-card-number"><b>**** **** **** 1018</b></p>
                             </div>
@@ -121,6 +130,7 @@ function Account(props) {
             </div>
 
         </div>
+
     )
 }
 

@@ -16,6 +16,8 @@ const Movies = () => {
     }
     console.log(movies)
     return (
+        <div>
+        <Navbar />
         <main className="bg-dark">
             <Navbar />
             <section className="py-5 text-center container ">
@@ -61,7 +63,11 @@ const Movies = () => {
                     </div>
                 </div>
             </div>
-        </main>    
+
+        </main>
+        </div>
+
+
     )
 }
 export default Movies;
