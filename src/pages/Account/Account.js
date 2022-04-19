@@ -1,4 +1,5 @@
 import "./Account.scss"
+import Navbar from "../../components/navbar/Navbar";
 import { ArrowDropDown, PinDropSharp } from "@material-ui/icons"
 import CreditPayment from "../../components/credit-payment/credit.payment";
 
@@ -40,23 +41,14 @@ function Account(props) {
     // }
 
     return (
-        <div className="account-page">
 
-            <div>
-                <div className="container-footer">
-                    {/* <img className="netflix-logo" src={netflix_logo} /> */}
-                    <div className="profile">
-                        {/* <img className="profile-image" src={profile_image}/> */}
-                      
-                        <div className="profile-dropdown">
-                            <ArrowDropDown className="icon" />
-                            <div className="options">
-                                <span>Settings</span>
-                                <span>Log out</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div className="account-page">
+            <Navbar className="navbar" />
+            <div className="main">
+
+
+
+
                 <div className="account-info">
                     <h2 className="account-title">Account</h2>
 
@@ -86,7 +78,7 @@ function Account(props) {
                             <div className="user-card-info">
 
                                 <img className="user-card" src=".././images/mastercard-v2.svg" />
-                              
+
 
                                 <p className="user-card-number"><b>**** **** **** 1018</b></p>
                             </div>
@@ -119,6 +111,7 @@ function Account(props) {
             </div>
 
         </div>
+
     )
 }
 

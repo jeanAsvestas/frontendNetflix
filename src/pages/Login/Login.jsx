@@ -1,4 +1,5 @@
 import "./login.scss";
+import Navbar from "../../components/navbar/Navbar";
 import { useState,useRef } from "react";
 import AuthService from "../../services/auth_service";
 
@@ -47,13 +48,15 @@ const Login = () => {
 
  
   return ( 
-    
+     
     <div className="login">
-      <div className="top">
+      {/* <div className="top">
         <div className="wrapper">
         </div>
-      </div>
-      <div className="container">
+      </div> */}
+      
+      <Navbar />
+      <div className="container-main">
         <form onSubmit={handleSubmit(handleLogin, handleError)}>
           <h1>Sign In</h1>
           <input type="email" placeholder="Email" 
@@ -80,6 +83,7 @@ const Login = () => {
         </form>
       </div>
     </div>
+
   );
 }
 

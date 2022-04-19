@@ -2,6 +2,7 @@ import "./movies.scss";
 import ListItem from "../../components/listItem/ListItem";
 import { useEffect, useState } from "react";
 import MovieService from '../../services/movie_service'
+import Navbar from "../../components/navbar/Navbar";
 const Movies = () => {
     const [movies, setMovies] = useState();
     useEffect(() => {
@@ -15,6 +16,8 @@ const Movies = () => {
     }
     console.log(movies)
     return (
+        <div>
+        <Navbar />
         <main className="bg-dark">
             <section className="py-5 text-center container ">
                 <div className="row py-lg-5">
@@ -60,6 +63,7 @@ const Movies = () => {
                 </div>
             </div>
         </main>
+        </div>
 
     )
 }

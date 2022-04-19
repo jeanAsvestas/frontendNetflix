@@ -43,7 +43,7 @@ const App = () => {
 
 
   return <>
-    <Navbar props={currentUser} />
+    {/* <Navbar props={currentUser} /> */}
 
 
     <Routes>
@@ -64,17 +64,17 @@ const App = () => {
       <Route element={<ProtectedRoute admin={currentUser?.isAdmin} />}>
 
         <Route exact path="/admin"  >
-          <Route index element={<AdminPage />} />
+          <Route index element={currentUser?.isAdmin ? <AdminPage /> : <Navigate to='/' /> } />
           <Route path="moviespanel">
-          <Route index element={<Moviespanel />} />
-            <Route path="addmovie" element={<AddMovie />} />
-            <Route path="editmovie/:movieId" element={<EditMovie />} />
-        </Route>
+            <Route index element={currentUser?.isAdmin ? <Moviespanel /> : <Navigate to='/' /> } />
+            <Route path="addmovie" element={currentUser?.isAdmin ? <AddMovie /> : <Navigate to='/' />} />
+            <Route path="editmovie/:movieId" element={currentUser?.isAdmin ? <EditMovie /> : <Navigate to='/' />} />
+          </Route>
           <Route path="users">
-          <Route index element={<ListAdmin />} />
-            <Route path=":userId" element={<Single />} />
+            <Route index element={currentUser?.isAdmin ? <ListAdmin /> : <Navigate to='/' /> } />
+            <Route path=":userId" element={currentUser?.isAdmin ? <Single /> : <Navigate to='/' />} />
+          </Route>
         </Route>
-      </Route>
       </Route>
     </Routes>
   </>
