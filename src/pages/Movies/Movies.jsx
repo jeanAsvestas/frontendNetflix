@@ -5,21 +5,30 @@ import MovieService from '../../services/movie_service'
 import Navbar from "../../components/navbar/Navbar";
 const Movies = () => {
     const [movies, setMovies] = useState();
+    const [filteredMovies, setFilteredMovies] = useState([]);
     useEffect(() => {
         MovieService.getLastMovies().then((res) => {
             setMovies(res)
+            setFilteredMovies(res)
         })
 
     }, []);
     const handleChange = async (e) => {
-        setMovies(await MovieService.getMoviesByGenre(e.target.value))
+        const results = await MovieService.getMoviesByGenre(e.target.value);
+        setMovies(results);
+        setFilteredMovies(results);
+
     }
-    console.log(movies)
+
+    const filterMovies = (e) => {
+        // console.log(e.target.value)
+        setFilteredMovies(movies.filter(movie => movie.title.toLowerCase().includes(e.target.value.toLowerCase())));
+    }
+
     return (
         <div>
-        <Navbar />
-        <main className="bg-dark">
-            <Navbar />
+            <Navbar filterMovies={filterMovies} />
+            <main className="bg-dark">
             <section className="py-5 text-center container ">
                 <div className="row py-lg-5">
                     <div className="col-lg-6 col-md-8 mx-auto">
@@ -50,7 +59,7 @@ const Movies = () => {
 
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         {/* {movies?    : spinner} */}
-                        {movies && movies.map((movie, index) => {
+                            {filteredMovies && filteredMovies.map((movie, index) => {
                             return (
                                 <div className="col" key={movie.id}>
                                     <div className="card shadow-sm" >
@@ -62,12 +71,9 @@ const Movies = () => {
                         }
                     </div>
                 </div>
-            </div>
-
+                </div>
         </main>
         </div>
-
-
     )
 }
 export default Movies;

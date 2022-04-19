@@ -6,7 +6,7 @@ import AuthService from "../../services/auth_service";
 import { ClickAwayListener } from "@material-ui/core";
 
 
-const Navbar = (props) => {
+const Navbar = ({ filterMovies }) => {
 
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   const navigate = useNavigate();
@@ -25,6 +25,11 @@ const Navbar = (props) => {
       }
     )
   }
+
+  // const filterMovies = (e) => {
+  //   console.log(e.target.value)
+  // }
+
   // console.log(props.props)
   return (
     
@@ -43,7 +48,7 @@ const Navbar = (props) => {
              <span>My List</span>
            </div>
         <div className="right">
-              <Search className="icon"/>
+          <input type="text" onChange={filterMovies} /> <Search className="icon" />
 
               <span>KID</span>
               <Notifications className="icon" />

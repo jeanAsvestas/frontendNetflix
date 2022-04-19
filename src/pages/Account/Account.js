@@ -6,7 +6,6 @@ import CreditPayment from "../../components/credit-payment/credit.payment";
 import React, { useState, useEffect } from "react";
 import AuthService from "../../services/auth_service";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
 
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
@@ -44,8 +43,8 @@ function Account(props) {
     return (
 
         <div className="account-page">
-            <Navbar className="navbar" />
-            <div className="main">
+
+
 
 
 

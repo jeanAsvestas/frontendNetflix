@@ -4,7 +4,6 @@ import { useState,useRef } from "react";
 import AuthService from "../../services/auth_service";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
 
 const Login = () => {
 
@@ -30,7 +29,7 @@ const Login = () => {
     console.log(e)
     await AuthService.login(e.email, e.password).then(res => {
       navigate('/')
-      // window.location.reload();
+      window.location.reload();
     },
       (err) => {
         console.log(err)
