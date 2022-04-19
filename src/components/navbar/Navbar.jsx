@@ -35,7 +35,7 @@ const Navbar = (props) => {
              alt="" 
              />
           <Link to="/">Home</Link>
-          <Link to="movies">Movies</Link>
+          <Link to="/movies">Movies</Link>
              <span>Series</span>
              <span>New And Popular</span>
              <span>My List</span>

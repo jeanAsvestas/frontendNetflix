@@ -1,6 +1,7 @@
 import "./register.scss"
 import { useState , useRef } from 'react'
 import { Link } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
 
 export default function Register() {
   const [email,setEmail] = useState("")
@@ -17,6 +18,7 @@ export default function Register() {
   }
   return (
     <div className="register">
+      <Navbar />
       <div className="top">
         <div className="wrapper">
 

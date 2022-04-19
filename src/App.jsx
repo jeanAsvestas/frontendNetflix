@@ -42,10 +42,7 @@ const App = () => {
   // }, [currentUser]);
 
 
-  return <>
-    <Navbar props={currentUser} />
-
-
+  return <>  
     <Routes>
 
       <Route exact path="/" element={<Home />} />
