@@ -1,11 +1,12 @@
 import "./register.scss"
-import { useState , useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 export default function Register() {
-  const [email,setEmail] = useState("")
-  const [password,setPassword] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -17,6 +18,7 @@ export default function Register() {
     setPassword(passwordRef.current.value)
   }
   return (
+    <>
     <div className="register">
       <Navbar />
       {/* <div className="top">
@@ -32,21 +34,24 @@ export default function Register() {
         <h2>Watch everywhere, Cancel anytime.</h2>
         <p>Ready to Watch? Enter your e-mail to to create your membership!</p>
         {!email ? (
-            <div className="input">
-            <input type="email" placeholder = "email address" ref={emailRef} />
+          <div className="input">
+            <input type="email" placeholder="email address" ref={emailRef} />
             <button className="registerButton" onClick={handleStart}>
               Get Started
             </button>
-          </div> 
-          ) : (
+          </div>
+        ) : (
           <form className="input">
-          <input type="password" placeholder = "password" ref={passwordRef} />
-          <button className="passwordButton" onClick={handleFinish}>
-            Start MemberShip
-          </button>
-        </form>
-        )} 
-         </div>
-       </div>
+            <input type="password" placeholder="password" ref={passwordRef} />
+            <button className="passwordButton" onClick={handleFinish}>
+              Start MemberShip
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+      <Footer />
+      </>
+    
   );
 }

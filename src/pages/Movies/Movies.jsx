@@ -3,6 +3,7 @@ import ListItem from "../../components/listItem/ListItem";
 import { useEffect, useState } from "react";
 import MovieService from '../../services/movie_service'
 import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const Movies = () => {
     const [movies, setMovies] = useState();
@@ -74,6 +75,7 @@ const Movies = () => {
                 </div>
                 </div>
         </main>
+        <Footer />
         </div>
     )
 }
