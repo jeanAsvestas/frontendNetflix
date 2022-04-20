@@ -1,6 +1,6 @@
 import "./movies.scss";
 import ListItem from "../../components/listItem/ListItem";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import MovieService from '../../services/movie_service'
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
@@ -8,7 +8,8 @@ import Footer from "../../components/footer/Footer";
 const Movies = () => {
     const [movies, setMovies] = useState();
     const [filteredMovies, setFilteredMovies] = useState([]);
-    useEffect(() => {
+
+    useEffect(() => {      
         MovieService.getLastMovies().then((res) => {
             setMovies(res)
             setFilteredMovies(res)
@@ -30,7 +31,7 @@ const Movies = () => {
     return (
         <div>
             <Navbar filterMovies={filterMovies} />
-            <main className="bg-dark">
+            <main className="bg-dark" >
             <section className="py-5 text-center container ">
                 <div className="row py-lg-5">
                     <div className="col-lg-6 col-md-8 mx-auto">

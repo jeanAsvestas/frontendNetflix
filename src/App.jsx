@@ -2,9 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./app.scss"
 import React, { useState, useEffect } from "react";
-import Navbar from "./components/navbar/Navbar"
 import Home from "./pages/Homepage/Home"
-import { Routes, Route, Navigate, Fragment } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../src/pages/Login/Login"
 import Watch from "./pages/watch/Watch"
 import Register from "./pages/Register/Register"
@@ -20,6 +19,7 @@ import Account from './pages/Account/Account';
 import ProtectedRoute from './ProtectedRoute';
 import Plans from './pages/Plans/Plans';
 import MyMovies from './pages/MyMovies/MyMovies';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 
@@ -27,6 +27,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   //const [isAdmin, setIsAdmin] = useState(false);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const user = AuthService.getCurrentUser();
     if (user) {
       setCurrentUser(user);
@@ -42,13 +43,8 @@ const App = () => {
   //   console.log(isAdmin);
   // }, [currentUser]);
 
-
-
-
-
-
-  return <>  
-
+  return (<Router>
+    <ScrollToTop />
     <Routes>
 
       <Route exact path="/" element={<Home />} />
@@ -81,7 +77,7 @@ const App = () => {
         </Route>
       </Route>
     </Routes>
-  </>
+  </Router>);
 
 };
 

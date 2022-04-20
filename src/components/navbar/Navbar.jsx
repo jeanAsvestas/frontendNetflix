@@ -1,5 +1,5 @@
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss"
 import AuthService from "../../services/auth_service";
@@ -11,6 +11,7 @@ const Navbar = ({ filterMovies }) => {
   const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -24,6 +25,15 @@ const Navbar = ({ filterMovies }) => {
       }
     )
   }
+
+  const toggleShowSearchBar = () => {
+    if (showSearchBar) {
+      setShowSearchBar(false);
+      return;
+    }
+    setShowSearchBar(true);
+  }
+
 
   return (
 
@@ -41,7 +51,8 @@ const Navbar = ({ filterMovies }) => {
           <Link to={`/mylist/${currentUser.id}`} >My List</Link>
         </div>
         <div className="right">
-          <input type="text" onChange={filterMovies} /> <Search className="icon" />
+          <input type="text" onChange={filterMovies} style={{ display: showSearchBar ? "block" : "none" }} />
+          <Search className="icon" onClick={toggleShowSearchBar} />
 
           <span>KID</span>
           <Notifications className="icon" />
