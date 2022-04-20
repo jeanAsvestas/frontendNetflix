@@ -44,13 +44,13 @@ function Account(props) {
     return (
         <>
             <div className="account-page">
-            <div>
+
                 <Navbar />
                 {/* <div className="container-footer">
                     {/* <img className="netflix-logo" src={netflix_logo} /> */}
                 {/* <div className="profile"> */}
-                        {/* <img className="profile-image" src={profile_image}/> */}
-                      
+                {/* <img className="profile-image" src={profile_image}/> */}
+
                 {/* <div className="profile-dropdown">
                             <ArrowDropDown className="icon" />
                             <div className="options">
@@ -59,65 +59,65 @@ function Account(props) {
                             </div>
                         </div>
                     </div>
-                </div> */} 
+                </div> */}
+                <div className="main-content">
+                    <div className="account-info">
+                        <h2 className="account-title">Account</h2>
 
-                <div className="account-info">
-                    <h2 className="account-title">Account</h2>
+                        <img className="member-since-image" src=".././images/membersince.svg" />
 
-                    <img className="member-since-image" src=".././images/membersince.svg" />
-
-                    <small className="member-since">Member Since October 2019</small>
-                </div>
-                <div className="membership-billing-content">
-                    <div className="left-section">
-                        <div className="membership-billing-info">
-                            <p className="membership-billing-title">Membership & Billing</p>
-                        </div>
-                        <div className="cancellation">
-                            <button className="cancel-membership"><small>Cancel Membership</small></button>
-                        </div>
+                        <small className="member-since">Member Since October 2019</small>
                     </div>
-                    <div className="right-section">
-                        <div className="email-info">
-                            <p className="user-email"><b>{props.props.email}</b></p>
-                            <a className="change-account-email" href="#">Change account email</a>
-                        </div>
-                        <div className="password-info">
-                            <p className="user-password">Password: ********</p>
-                            <a className="change-account-password" href="#">Change account password</a>
-                        </div>
-                        <div className="card-info">
-                            <div className="user-card-info">
-
-                                <img className="user-card" src=".././images/mastercard-v2.svg" />
-
-
-                                <p className="user-card-number"><b>**** **** **** 1018</b></p>
+                    <div className="membership-billing-content">
+                        <div className="left-section">
+                            <div className="membership-billing-info">
+                                <p className="membership-billing-title">Membership & Billing</p>
                             </div>
-                            <div className="payment-info">
-                                <a className="manage-payment-info" href="#">Manage payment info</a>
+                            <div className="cancellation">
+                                <button className="cancel-membership"><small>Cancel Membership</small></button>
                             </div>
                         </div>
-                        <div className="billing-expire-date-details">
-                            <p className="billing-date">Your next billing date is April 10, 2022.</p>
-                            <a className="billing-details">Billing details</a>
+                        <div className="right-section">
+                            <div className="email-info">
+                                <p className="user-email"><b>{props.props.email}</b></p>
+                                <a className="change-account-email" href="#">Change account email</a>
+                            </div>
+                            <div className="password-info">
+                                <p className="user-password">Password: ********</p>
+                                <a className="change-account-password" href="#">Change account password</a>
+                            </div>
+                            <div className="card-info">
+                                <div className="user-card-info">
+
+                                    <img className="user-card" src=".././images/mastercard-v2.svg" />
+
+
+                                    <p className="user-card-number"><b>**** **** **** 1018</b></p>
+                                </div>
+                                <div className="payment-info">
+                                    <a className="manage-payment-info" href="#">Manage payment info</a>
+                                </div>
+                            </div>
+                            <div className="billing-expire-date-details">
+                                <p className="billing-date">Your next billing date is April 10, 2022.</p>
+                                <a className="billing-details">Billing details</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="plan-info">
-                    <div className="plan-details">
-                        <p className="plan-details-header">Plan Details</p>
-                    </div>
-                    <div className="right-content">
-                        <div className="plan-type">
-                            <p className="plan-type-header"><b>Premium</b></p>
+                    <div className="plan-info">
+                        <div className="plan-details">
+                            <p className="plan-details-header">Plan Details</p>
                         </div>
-                        <div className="change-plan">
-                            <a className="change-plan-link">Change plan</a>
-                        </div>
+                        <div className="right-content">
+                            <div className="plan-type">
+                                <p className="plan-type-header"><b>Premium</b></p>
+                            </div>
+                            <div className="change-plan">
+                                <a className="change-plan-link">Change plan</a>
+                            </div>
                         </div>
                     </div><CreditPayment />
-                {/* <PayPalScriptProvider options={initialOptions}>
+                    {/* <PayPalScriptProvider options={initialOptions}>
                     <PayPalButtons style={{ layout: "horizontal" }} />
                 </PayPalScriptProvider> */}
                 </div>
