@@ -38,7 +38,7 @@ const Navbar = ({ filterMovies }) => {
           <Link to="/movies">Movies</Link>
           <span>Series</span>
           <span>New And Popular</span>
-          <span>My List</span>
+          <Link to={`/mylist/${currentUser.id}`} >My List</Link>
         </div>
         <div className="right">
           <input type="text" onChange={filterMovies} /> <Search className="icon" />
