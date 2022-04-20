@@ -8,9 +8,17 @@ const getAllUsers = () => {
             return res.data;
         })
 }
+const getOneUser = (id) => {
+    return axios.get(API_URL + `getone/${id}`)
+        .then((res) => {
+            //console.log(res.data)
+            return res.data;
+        })
+}
 
 let UserService = {
-    getAllUsers
+    getAllUsers,
+    getOneUser
 };
 
 export default UserService;
