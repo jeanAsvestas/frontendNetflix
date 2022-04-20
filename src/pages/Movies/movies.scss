@@ -19,8 +19,10 @@ main {
     
 
     .listItem {
-      width: 400px;
+      // width: 400px;
       height: 225px;
+      border: none;
+      border-radius: 5px;
 
       img {
         object-fit:cover;

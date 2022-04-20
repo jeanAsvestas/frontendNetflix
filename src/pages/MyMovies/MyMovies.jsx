@@ -3,6 +3,8 @@ import Navbar from "../../components/navbar/Navbar";
 import AuthService from "../../services/auth_service"
 import MovieService from "../../services/movie_service"
 import ListItem from "../../components/listItem/ListItem";
+import './MyMovies.scss';
+import Footer from "../../components/footer/Footer";
 
 const MyMovies = () => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
@@ -17,8 +19,8 @@ const MyMovies = () => {
     return (
         <>
             <Navbar />
-            <div className="album py-5 bg-black">
-                <div className="container">
+            <div className="album py-5 bg-black main">
+                <div className="container list-container">
 
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         {/* {movies?    : spinner} */}
@@ -26,7 +28,7 @@ const MyMovies = () => {
                             return (
                                 <div className="col" key={movie.id}>
                                     <div className="card shadow-sm" >
-                                        <ListItem props={movie} ></ListItem>
+                                        <ListItem props={movie} />
                                     </div>
                                 </div>
                             )
@@ -35,6 +37,7 @@ const MyMovies = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 
