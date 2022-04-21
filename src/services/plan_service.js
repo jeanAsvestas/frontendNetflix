@@ -13,6 +13,15 @@ const readPlan = async () => {
     });
 }
 
-let PlanService = { buyPlan, readPlan };
+const getUserPlan = async (id) => {
+    return axios.get(API_URL + `readuserplan/${id}`, {
+    });
+}
+
+let PlanService = {
+    buyPlan,
+    readPlan,
+    getUserPlan
+};
 
 export default PlanService;
