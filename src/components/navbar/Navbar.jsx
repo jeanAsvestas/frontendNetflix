@@ -3,6 +3,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss"
 import AuthService from "../../services/auth_service";
+// import { ClickAwayListener } from "@material-ui/core";
+
 
 const Navbar = ({ filterMovies }) => {
 
@@ -46,7 +48,8 @@ const Navbar = ({ filterMovies }) => {
           <Link to="/movies">Movies</Link>
           <span>Series</span>
           <span>New And Popular</span>
-          <Link to={`/mylist/${currentUser.id}`} >My List</Link>
+          {currentUser && <Link to={`/mylist/${currentUser.id}`} >My List</Link>}
+
         </div>
         <div className="right">
           <input type="text" onChange={filterMovies} style={{ display: showSearchBar ? "block" : "none" }} />

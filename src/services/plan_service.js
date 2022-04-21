@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./axios";
 const API_URL = "http://localhost:4000/api/plan/";
 
 const buyPlan = async (user, plan) => {

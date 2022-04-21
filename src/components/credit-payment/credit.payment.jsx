@@ -1,58 +1,68 @@
 import "./credit.payment.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useNavigate } from "react-router-dom";
 import { convertLength } from "@mui/material/styles/cssUtils";
+import PlanService from '../../services/plan_service';
+import swal from '@sweetalert/with-react';
+import AuthService from "../../services/auth_service";
 
-const CreditPayment = () => {
+const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
     const nav = useNavigate();
+    const [currentUser, setCurrentUser] = useState("")
+    const [plans, setPlans] = useState("")
+    useEffect(() => {
+        setCurrentUser(AuthService.getCurrentUser());
+        PlanService.readPlan().then(res => {
+            setPlans(res.data.plans);
+        })
+
+    }, [])
     //for vanilla bootstrap modal
-    const modalRef = useRef();
-    // const submitPayment = () => {
-    //     alert("Payment Successful");
-    //     // modalRef.current.style.display = "display"
-    //     console.log(modalRef);
-    // };
 
 
 
     const [show, setShow] = useState(false);
+    useEffect(() => {
+        setShow(isDisplayed);
+    }, [isDisplayed]);
+    const handleClose = () => {
+        setShowPlans(false)
+        //setShow(false);
+    }
+    // const submitPayment = (e) => {
+    //     alert("Payment Successful");
+    //     setShow(false);
+    //     setShowPlans(false)
+    // }
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const submitPayment = (e) => {
-        console.log(modalRef.current.value);
-        alert("Payment Successful");
+    const submitPayment = () => {
+        PlanService.buyPlan(currentUser, plans[planId - 1]).then(
+            () => {
+                swal({
+                    title: "Plan bought successfully!",
+                    text: "Watch now!",
+                    icon: "success",
+                    buttons: false,
+                    timer: 1500,
+                }).then(
+                    () => {
+                        nav('/');
+                    }
+                );
+            }
+        );
         setShow(false);
-    }
-    const CCnumber = () => {
-        const modarefFormatted = modalRef.current.value.replace(/\s/g, '').replace(/(.{4})/g, '$1 ');
-        modalRef.current.value = modarefFormatted;
+        setShowPlans(false)
+    };
 
 
-    }
-
-
-    // const showModal = () => {
-    //     const modalEle = modalRef.current
-    //     const bsModal = new Modal(modalEle, {
-    //         backdrop: 'static',
-    //         keyboard: false
-    //     })
-    //     bsModal.show()
-    // }
-
-    // const hideModal = () => {
-    //     const modalEle = modalRef.current
-    //     const bsModal = bootstrap.Modal.getInstance(modalEle)
-    //     bsModal.hide()
-    // }
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            {/* <Button variant="primary" onClick={handleShow}>
                 Launch demo modal
-            </Button>
+            </Button> */}
 
             <Modal show={show} onHide={handleClose} backdrop="static"
                 keyboard={false} centered >
@@ -64,19 +74,7 @@ const CreditPayment = () => {
                         amount="0.01"
                         // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                         onSuccess={(details, data) => {
-                            console.log(details, data)
-                            alert("Transaction completed by ");
 
-                            // OPTIONAL: Call your server to save the transaction
-                            return fetch("/paypal-transaction-complete", {
-                                method: "post",
-                                body: JSON.stringify({
-                                    orderId: data.orderID
-                                })
-                            });
-                        }}
-                        options={{
-                            clientId: "PRODUCTION_CLIENT_ID"
                         }}
                     />
                 </Modal.Body>

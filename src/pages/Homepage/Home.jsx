@@ -19,7 +19,7 @@ const Home = (props) => {
     console.log("home")
     categoriesFeatured.forEach(category => {
       MovieService.getMoviesByGenre(category).then((res) => {
-        category == "adventure" ? setAdventureMovies(res) : category == "horror" ? setHorrorMovies(res) : setComedyMovies(res);
+        category === "adventure" ? setAdventureMovies(res) : category === "horror" ? setHorrorMovies(res) : setComedyMovies(res);
       })
     })
 

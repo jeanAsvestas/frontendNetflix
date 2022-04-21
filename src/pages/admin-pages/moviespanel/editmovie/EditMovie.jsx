@@ -16,7 +16,7 @@ export default function EditMovie() {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
     useEffect(() => {
-        MovieService.getOneMovie(currentUser.id, window.location.pathname.split('/')[4]).then((res) => {
+        MovieService.getOneMovieToEdit(window.location.pathname.split('/')[4]).then((res) => {
             setMovie(res.movie)
         })
         //console.log(movie);
