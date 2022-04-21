@@ -18,6 +18,9 @@ const getMoviesByGenre = (genre) => {
 
 }
 const getOneMovie = (userId, movieId) => {
+console.log('=--=---=-=-')
+console.log(userId,movieId)
+
     return axios.post(API_URL + `watch/${movieId}`, { userId: userId, movieId: movieId })
         .then((res) => {
             console.log(res.data)
