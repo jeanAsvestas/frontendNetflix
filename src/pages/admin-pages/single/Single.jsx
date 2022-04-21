@@ -4,6 +4,7 @@ import NavbarAdmin from "../../../components/admin-components/navbar-admin/Navba
 import { useEffect, useState } from "react"
 import UserService from "../../../services/user_service"
 import PlanService from "../../../services/plan_service"
+import Table from "../../../components/table/Table"
 
 function Single() {
   const [currentUser, setCurrentUser] = useState();
@@ -66,12 +67,13 @@ function Single() {
           </div>
         </div>
         <div className="bottom">
-          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1].expiresAt) > new Date()) ? <div>This user has an active plan</div> : <div>This user has no active plan</div>}
-          {orderedPlans && orderedPlans.map((orderedPlan) => {
+          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1].expiresAt) > new Date()) ? <div>This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1].expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
+          {/* {orderedPlans && orderedPlans.map((orderedPlan) => {
             return (
               <div key={orderedPlan.id}>{orderedPlan.pricePaid} </div>
             )
-          })}
+          })} */}
+          <Table list={orderedPlans} colNames={Object.keys(orderedPlans[0])}/>
         </div>
       </div>
     </div>
