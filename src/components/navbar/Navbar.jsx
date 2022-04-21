@@ -1,10 +1,8 @@
-import { ArrowDropDown, Notifications, Search } from "@material-ui/icons"
-import { useEffect, useState } from "react"
+import { ArrowDropDown, Search } from "@material-ui/icons"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.scss"
 import AuthService from "../../services/auth_service";
-import { ClickAwayListener } from "@material-ui/core";
-
 
 const Navbar = ({ filterMovies }) => {
 
@@ -44,9 +42,7 @@ const Navbar = ({ filterMovies }) => {
           <input type="text" onChange={filterMovies} /> <Search className="icon" />
 
           <span>KID</span>
-          <Notifications className="icon" />
-          <img src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt="" />
+
           {currentUser ?
             (
               <div className="profile ">

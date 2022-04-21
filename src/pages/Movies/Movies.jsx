@@ -8,7 +8,8 @@ import Footer from "../../components/footer/Footer";
 const Movies = () => {
     const [movies, setMovies] = useState();
     const [filteredMovies, setFilteredMovies] = useState([]);
-    useEffect(() => {
+
+    useEffect(() => {      
         MovieService.getLastMovies().then((res) => {
             setMovies(res)
             setFilteredMovies(res)
@@ -30,7 +31,7 @@ const Movies = () => {
     return (
         <div>
             <Navbar filterMovies={filterMovies} />
-            <main className="bg-dark">
+            <main className="bg-dark" >
             <section className="py-5 text-center container ">
                 <div className="row py-lg-5">
                     <div className="col-lg-6 col-md-8 mx-auto">
@@ -79,3 +80,4 @@ const Movies = () => {
         </div>
     )
 }
+export default Movies;
