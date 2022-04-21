@@ -1,13 +1,13 @@
 
 import "./datatable-movies.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../../datatablesource-movie";
+import { userColumns } from "../../../datatablesource-movie";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MovieService from '../../../services/movie_service'
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  // const [data, setData] = useState(userRows);
 
   const handleDelete = (id) => {
     console.log(id);

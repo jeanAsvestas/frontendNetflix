@@ -1,17 +1,17 @@
 
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../../datatablesource";
+import { userColumns } from "../../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import UserService from "../../../services/user_service";
 
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  // const [data, setData] = useState(userRows);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   setData(data.filter((item) => item.id !== id));
+  // };
 
   const [users, setUsers] = useState();
   useEffect(() => {

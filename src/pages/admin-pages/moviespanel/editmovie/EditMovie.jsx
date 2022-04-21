@@ -13,7 +13,7 @@ export default function EditMovie() {
     const [movie, setMovie] = useState();
 
     useEffect(() => {
-        MovieService.getOneMovie(window.location.pathname.split('/')[4]).then((res) => {
+        MovieService.getOneMovieToEdit(window.location.pathname.split('/')[4]).then((res) => {
             setMovie(res.movie)
         })
         //console.log(movie);

@@ -1,5 +1,6 @@
-import axios from "axios";
+import axios from "./axios";
 const API_URL = "http://localhost:4000/api/movie/";
+
 
 
 const getLastMovies = () => {
@@ -24,13 +25,20 @@ const getOneMovie = (userId, movieId) => {
             return res.data;
         })
 }
-
 const addOneMovie = (movie) => {
     return axios.post(API_URL + 'add', { movie })
         .then((res) => {
             return res.data;
         })
 }
+const getOneMovieToEdit = (movieId) => {
+    return axios.post(API_URL + `edit/${movieId}`, { movieId: movieId })
+        .then((res) => {
+            console.log(res.data)
+            return res.data;
+        })
+}
+
 const editMovie = (movie) => {
     return axios.post(API_URL + 'update', { movie })
         .then((res) => {
@@ -58,7 +66,8 @@ let MovieService = {
     addOneMovie,
     editMovie,
     deleteMovie,
-    getMyMovies
+    getMyMovies,
+    getOneMovieToEdit
 };
 
 export default MovieService;

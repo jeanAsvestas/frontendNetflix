@@ -1,8 +1,8 @@
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from "@material-ui/icons"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import ListItem from "../listItem/ListItem"
 import "./list.scss"
-import MovieService from "../../services/movie_service"
+// import MovieService from "../../services/movie_service"
 
 export default function List(props) {
   const [movies, setMovies] = useState(props.props);
