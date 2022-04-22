@@ -1,11 +1,13 @@
 import "./Account.scss"
 import Navbar from "../../components/navbar/Navbar";
-import { ArrowDropDown, PinDropSharp } from "@material-ui/icons"
+// import { ArrowDropDown, PinDropSharp } from "@material-ui/icons"
 import CreditPayment from "../../components/credit-payment/credit.payment";
 
-import React, { useState, useEffect } from "react";
-import AuthService from "../../services/auth_service";
-import { useNavigate } from "react-router-dom";
+import React, {
+    // useEffect 
+} from "react";
+// import AuthService from "../../services/auth_service";
+import { Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
@@ -18,28 +20,24 @@ import Footer from "../../components/footer/Footer";
 // };
 
 function Account(props) {
-    const navigate = useNavigate();
     //const [currentUsers, setCurrentUsers] = useState(undefined);
-    useEffect(() => {
-        console.log(props);
-        const user = AuthService.getCurrentUser();
-        // if (user) {
-        //     setCurrentUsers(user);
-        // }
+    // useEffect(() => {
+    //     console.log(props);
+    //     const user = AuthService.getCurrentUser();
+    //     // if (user) {
+    //     //     setCurrentUsers(user);
+    //     // }
 
-        // if (user.isAdmin) {
-        //     navigate("/admin");
-        // }
-        // const user = AuthService.getCurrentUser();
-        // if (user) {
-        //     setCurrentUsers(user);
-        // }
-    }, []);
+    //     // if (user.isAdmin) {
+    //     //     navigate("/admin");
+    //     // }
+    //     // const user = AuthService.getCurrentUser();
+    //     // if (user) {
+    //     //     setCurrentUsers(user);
+    //     // }
+    // }, []);
 
-    // const handleNoUsers = () => {
-    //     navigate("/login");
-    //     window.location.reload();
-    // }
+
 
     return (
         <>
@@ -113,7 +111,7 @@ function Account(props) {
                                 <p className="plan-type-header"><b>Premium</b></p>
                             </div>
                             <div className="change-plan">
-                                <a className="change-plan-link">Change plan</a>
+                                <Link to="/plans" className="change-plan-link">Change plan</Link>
                             </div>
                         </div>
                     </div><CreditPayment />
@@ -128,13 +126,3 @@ function Account(props) {
 }
 
 export default Account;
-
-
-{/* <img src={myIcon} alt="icon" />
-
-
-import myIcon from './relative/path/to/icon.svg'
-
-
-<img src={require('/images/image-name.png')}  */}
-

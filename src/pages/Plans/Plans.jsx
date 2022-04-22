@@ -7,13 +7,19 @@ import PlanService from '../../services/plan_service';
 import AuthService from "../../services/auth_service";
 import "./plans.scss"
 import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/Footer';
+import CreditPayment from '../../components/credit-payment/credit.payment';
+import { PayPalButton } from "react-paypal-button-v2";
+import { Modal, Button, Form } from "react-bootstrap";
+
 
 
 const Plans = () => {
     const [currentUser, setCurrentUser] = useState("")
     const [plans, setPlans] = useState("")
+    const [planId, setPlanId] = useState();
     const nav = useNavigate();  //redirect 
-
+    const [show, setShow] = useState(false);
     useEffect(() => {
         setCurrentUser(AuthService.getCurrentUser());
         PlanService.readPlan().then(res => {
@@ -23,22 +29,12 @@ const Plans = () => {
     }, [])
 
     const handlePlan = (e) => {
-        PlanService.buyPlan(currentUser, plans[e.target.id - 1]).then(
-            () => {
-                swal({
-                    title: "Plan bought successfully!",
-                    text: "Watch now!",
-                    icon: "success",
-                    buttons: false,
-                    timer: 1500,
-                }).then(
-                    () => {
-                        nav('/');
-                    }
-                );
-            }
-        );
+        console.log(show);
+        setShow(true);
+        setPlanId(e.target.id);
     }
+
+
 
     return (
         <div>
@@ -129,6 +125,8 @@ const Plans = () => {
                 <br />
 
             </div>
+            <Footer />
+            <CreditPayment isDisplayed={show} setShowPlans={setShow} planId={planId} />
         </div>
     )
 }

@@ -2,18 +2,21 @@ import "./editmovie.scss";
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { useNavigate, } from "react-router-dom";
+// import AuthService from '../../../services/auth_service';
 import MovieService from "../../../../services/movie_service";
 import Sidebar from "../../../../components/admin-components/sidebar/Sidebar";
 import NavbarAdmin from "../../../../components/admin-components/navbar-admin/Navbar-admin";
+import AuthService from "../../../../services/auth_service";
 
 
 
 
 export default function EditMovie() {
     const [movie, setMovie] = useState();
+    const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
 
     useEffect(() => {
-        MovieService.getOneMovie(window.location.pathname.split('/')[4]).then((res) => {
+        MovieService.getOneMovieToEdit(window.location.pathname.split('/')[4]).then((res) => {
             setMovie(res.movie)
         })
         //console.log(movie);
