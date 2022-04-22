@@ -4,7 +4,7 @@ import NavbarAdmin from "../../../components/admin-components/navbar-admin/Navba
 import { useEffect, useState } from "react"
 import UserService from "../../../services/user_service"
 import PlanService from "../../../services/plan_service"
-import Table from "../../../components/table/Table"
+// import Table from "../../../components/table/Table"
 
 function Single() {
   const [currentUser, setCurrentUser] = useState();
@@ -18,6 +18,7 @@ function Single() {
     PlanService.getUserPlan(param).then(res => {
       setOrderedPlans(res.data.orderedPlans);
       console.log(res.data.orderedPlans)
+      // console.log(Object.keys(orderedPlans[orderedPlans.length-1]));
     })
   }, []);
 
@@ -67,13 +68,33 @@ function Single() {
           </div>
         </div>
         <div className="bottom">
-          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1].expiresAt) > new Date()) ? <div>This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1].expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
-          {/* {orderedPlans && orderedPlans.map((orderedPlan) => {
-            return (
-              <div key={orderedPlan.id}>{orderedPlan.pricePaid} </div>
-            )
-          })} */}
-          <Table list={orderedPlans} colNames={Object.keys(orderedPlans[0])}/>
+          <div className="plan-activation">
+            {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1].expiresAt) > new Date()) ? <div>This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1].expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
+          </div>
+          <table className="user-plan-info">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Plan</th>
+                <th>Price</th>
+                <th>Registration Date</th>
+                <th>Expiration Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orderedPlans && orderedPlans.map(plan => {
+                return <tr key={plan.id}>
+                  <td>{plan.id}</td>
+                  <td>{currentUser.Plans[plan.PlanId - 1].name}</td>
+                  <td>{plan.pricePaid}</td>
+                  <td>{new Date(plan.createdAt).toLocaleDateString()}</td>
+                  <td>{new Date(plan.expiresAt).toLocaleDateString()}</td>
+                </tr>
+              })}
+            </tbody>
+
+          </table>
+
         </div>
       </div>
     </div>
