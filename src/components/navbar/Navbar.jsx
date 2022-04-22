@@ -55,7 +55,11 @@ const Navbar = ({ filterMovies }) => {
           <input type="text" onChange={filterMovies} style={{ display: showSearchBar ? "block" : "none" }} />
           <Search className="icon" onClick={toggleShowSearchBar} />
 
+
+
+
           {/* <span>KID</span> */}
+
           {currentUser ?
             (
               <div className="profile ">
