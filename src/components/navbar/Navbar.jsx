@@ -47,20 +47,26 @@ const Navbar = ({ filterMovies }) => {
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
           <span>Series</span>
-          <span>New And Popular</span>
-          {currentUser && <Link to={`/mylist/${currentUser.id}`} >My List</Link>}
+          <span>New Movies</span>
+          {currentUser && <Link to={`/mylist/${currentUser.id}`} >My Watchlist</Link>}
 
         </div>
         <div className="right">
           <input type="text" onChange={filterMovies} style={{ display: showSearchBar ? "block" : "none" }} />
           <Search className="icon" onClick={toggleShowSearchBar} />
 
-          <span>KID</span>
+
+
+
+          {/* <span>KID</span> */}
 
           {currentUser ?
             (
               <div className="profile ">
-                <ArrowDropDown className="icon" />
+                <img src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                  alt="" />
+                <Notifications className="icon" />
+                <ArrowDropDown className="icon options" />
                 <div className="options">
                   <Link to='/account' >Settings</Link>
                   <Link to="/" onClick={logout} >Logout</Link>
@@ -84,3 +90,4 @@ const Navbar = ({ filterMovies }) => {
 }
 
 export default Navbar
+

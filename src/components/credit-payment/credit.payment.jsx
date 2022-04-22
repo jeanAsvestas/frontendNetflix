@@ -67,11 +67,13 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
             <Modal show={show} onHide={handleClose} backdrop="static"
                 keyboard={false} centered >
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Basic subscription 7euros</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <PayPalButton
-                        amount="0.01"
+                        amount="7"
+                        currency="EUR"
+
                         // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                         onSuccess={(details, data) => {
 
