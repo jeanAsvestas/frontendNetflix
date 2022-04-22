@@ -1,20 +1,26 @@
 .account-page {
     box-sizing: border-box;
+    background: black;
+    
 
-
-// .navbar {
-//     background-color: black;
-// }
-
+.navbar2 {
+    background: black;
+}
 .main-content {
     min-height: 100vh;
+    padding-top: 120px;
+}
+
+p {
+    color: white;
 }
 
 
 .account-info {
     max-width: 60%;
     margin: 0 auto;
-    margin-top: 80px;
+    color: white;
+    // margin-top: 80px;
 
     border-bottom: 1px solid black;
     height: 70px;
@@ -35,6 +41,7 @@
     height: 300px;
     max-width: 60%;
     margin: 0 auto;
+    // padding-top: 80px;
 
     .left-section {
         width: 25%;
@@ -69,7 +76,8 @@
         }
 
         .cancel-membership:hover {
-            background-color: rgb(156, 156, 156);
+            background-color: red;
+            color: white;
             
         }
 
