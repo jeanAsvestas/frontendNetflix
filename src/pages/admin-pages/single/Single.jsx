@@ -65,40 +65,40 @@ function Single() {
             </div>
           </div>
         </div>
-        <div className="bottom">
-          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div>This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
+        <div className="container- fluid bottom">
+          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div className="plan-activation">This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
           {/* {orderedPlans && orderedPlans.map((orderedPlan) => {
             return (
               <div key={orderedPlan.id}>{orderedPlan.pricePaid} </div>
             
             )
           })} */}
-
-          <table>
+          <div className="container-fluid">
+          <table className="table">
             <thead>
               <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Registration Date</th>
-                <th>Expiration Date</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Registration Date</th>
+                <th scope="col">Expiration Date</th>
               </tr>
             </thead>
             <tbody>
               {
                 orderedPlans && orderedPlans.map((plan, index) => {
-                  return <tr key={plan.id}>
+                  return <tr scope="col" key={plan.id}>
                         <td>{index + 1}</td>
-                        <td>{plan.id}</td>
+                        <td>{plan.PlanId == 1 ? "Basic" : plan.PlanId == 2 ? "Standard" : "Premium"}</td>
                         <td>{plan.pricePaid}</td>
-                        <td>{plan.createdAt}</td>
-                        <td>{plan.expiresAt}</td>
+                        <td>{new Date(plan.createdAt).toLocaleDateString()}</td>
+                        <td>{new Date(plan.expiresAt).toLocaleDateString()}</td>
                   </tr>
                 })
               }
             </tbody>
           </table>
-
+          </div>
         </div>
       </div>
     </div>
