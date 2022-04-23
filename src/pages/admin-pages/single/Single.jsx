@@ -69,9 +69,12 @@ function Single() {
           {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div>This user has an active plan</div> : <div>This user has no active plan</div>}
           {orderedPlans && orderedPlans.map((orderedPlan) => {
             return (
-              <div key={orderedPlan.id}>{orderedPlan.pricePaid} </div>
+              <div key={orderedPlan.id}>{orderedPlan.pricePaid} name
+                {/* {orderedPlan.PlanId} */}
+                {currentUser && currentUser.Plans[orderedPlan.PlanId - 1].name}
+              </div>
             )
-          })}
+          })} 
         </div>
       </div>
     </div>

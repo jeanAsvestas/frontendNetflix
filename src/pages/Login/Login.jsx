@@ -68,7 +68,7 @@ const Login = () => {
           {errors.password?.type === 'maxLength' && <div className="alert alert-danger">Too long password</div>}
           <button className="loginButton">
             Sign In</button>
-          {err !== undefined && <div className="alert alert-danger">Wrong credentials</div>}
+            {err !== undefined && <div className="alert alert-danger errors">Wrong credentials</div>}
           <span>
               New to Netflix? <Link to="/register"><b>Sign up now.</b></Link>
           </span>

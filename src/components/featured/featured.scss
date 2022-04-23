@@ -12,7 +12,7 @@
     color: white;
     display: flex;
     align-items: center;
-
+    
     select {
       cursor: pointer;
       background-color: var(--main-color);
@@ -32,6 +32,7 @@
   iframe{
     position: relative;
     top: -60px;
+    width:100%;
   }
 
     &:hover{
