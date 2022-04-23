@@ -10,6 +10,7 @@ import React, {
 import { Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import PlanService from "../../services/plan_service"
+import UserService from "../../services/user_service";
 
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
@@ -22,7 +23,8 @@ import PlanService from "../../services/plan_service"
 
 function Account(props) {
     const [orderedPlans, setOrderedPlans] = useState();
-    const [currentPlan, setCurrentPlan] = useState();
+    // const [currentPlan, setCurrentPlan] = useState();
+    const [currentUser, setCurrentUser] = useState();
     //const [currentUsers, setCurrentUsers] = useState(undefined);
     // useEffect(() => {
     //     console.log(props);
@@ -41,13 +43,15 @@ function Account(props) {
     // }, []);
 
     useEffect(() => {
+       
         PlanService.getUserPlan(props.props.id).then(res => {
             setOrderedPlans(res.data.orderedPlans);
             console.log(res.data.orderedPlans)
         });
-        PlanService.readPlan().then(res => {
-            console.log(res.data.plans);
-            setCurrentPlan(res.data.plans);
+        
+        UserService.getOneUser(props.props.id).then(res => {
+            setCurrentUser(res);
+            console.log(res);
         })
 
     },[]);
@@ -81,7 +85,7 @@ function Account(props) {
 
                         <img className="member-since-image" src=".././images/membersince.svg" />
 
-                        <small className="member-since">Member Since October 2019</small>
+                        <small className="member-since">Member Since {currentUser && new Date(currentUser.createdAt).toLocaleDateString()}</small>
                     </div>
                     <div className="membership-billing-content">
                         <div className="left-section">
@@ -129,7 +133,7 @@ function Account(props) {
                         <div className="right-content">
                             <div className="plan-type">
                                 <p className="plan-type-header">
-                                {/* <b>{orderedPlans && orderedPlans[orderedPlans.length -1].PlanId == 1 ? "Basic" : orderedPlans[orderedPlans.length -1].PlanId == 2 ? "Standard" : "Premium"}</b> */}
+                                <b>{orderedPlans && orderedPlans[orderedPlans.length -1].PlanId == 1 ? "Basic" : orderedPlans && orderedPlans[orderedPlans.length -1].PlanId == 2 ? "Standard" : "Premium"}</b>
                                 </p>
                             </div>
                             <div className="change-plan">
