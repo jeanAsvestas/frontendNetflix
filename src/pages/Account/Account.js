@@ -4,11 +4,12 @@ import Navbar from "../../components/navbar/Navbar";
 import CreditPayment from "../../components/credit-payment/credit.payment";
 
 import React, {
-    // useEffect 
+    useState, useEffect
 } from "react";
 // import AuthService from "../../services/auth_service";
 import { Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
+import PlanService from "../../services/plan_service"
 
 // import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
@@ -20,6 +21,8 @@ import Footer from "../../components/footer/Footer";
 // };
 
 function Account(props) {
+    const [orderedPlans, setOrderedPlans] = useState();
+    const [currentPlan, setCurrentPlan] = useState();
     //const [currentUsers, setCurrentUsers] = useState(undefined);
     // useEffect(() => {
     //     console.log(props);
@@ -36,6 +39,20 @@ function Account(props) {
     //     //     setCurrentUsers(user);
     //     // }
     // }, []);
+
+    useEffect(() => {
+        PlanService.getUserPlan(props.props.id).then(res => {
+            setOrderedPlans(res.data.orderedPlans);
+            console.log(res.data.orderedPlans)
+        });
+        PlanService.readPlan().then(res => {
+            console.log(res.data.plans);
+            setCurrentPlan(res.data.plans);
+        })
+
+    },[]);
+
+
 
 
 
@@ -97,7 +114,10 @@ function Account(props) {
                                 </div>
                             </div>
                             <div className="billing-expire-date-details">
-                                <p className="billing-date">Your next billing date is April 10, 2022.</p>
+                                {/* <p className="billing-date">Your next billing date is April 10, 2022.</p> */}
+                                {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date())
+                                    ? <p>Your next billing date is {new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt).toLocaleDateString()}.</p>
+                                    : <p>This user has no active plan</p>}
                                 <a className="billing-details">Billing details</a>
                             </div>
                         </div>
@@ -108,7 +128,9 @@ function Account(props) {
                         </div>
                         <div className="right-content">
                             <div className="plan-type">
-                                <p className="plan-type-header"><b>Premium</b></p>
+                                <p className="plan-type-header">
+                                {/* <b>{orderedPlans && orderedPlans[orderedPlans.length -1].PlanId == 1 ? "Basic" : orderedPlans[orderedPlans.length -1].PlanId == 2 ? "Standard" : "Premium"}</b> */}
+                                </p>
                             </div>
                             <div className="change-plan">
                                 <Link to="/plans" className="change-plan-link">Change plan</Link>

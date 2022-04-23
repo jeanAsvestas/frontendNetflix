@@ -21,7 +21,7 @@ const MyMovies = () => {
             <Navbar />
             <div className="album py-5 bg-black main">
                 <div className="container list-container">
-                    <img src="../.././images/watch_again.png" className="container image-logo"/>
+                    <h1 className="my-watclist">My Watchlist</h1>
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         {/* {movies?    : spinner} */}
                         {movies && movies.map((movie, index) => {
