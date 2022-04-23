@@ -3,7 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import AuthService from "../../services/auth_service";
 import { useForm } from 'react-hook-form';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 
 const Login = () => {
@@ -70,7 +70,7 @@ const Login = () => {
             Sign In</button>
           {err !== undefined && <div className="alert alert-danger">Wrong credentials</div>}
           <span>
-            New to Netflix? <b>Sign up now.</b>
+              New to Netflix? <Link to="/register"><b>Sign up now.</b></Link>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a
