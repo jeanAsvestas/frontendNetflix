@@ -133,7 +133,7 @@ function Account(props) {
                         <div className="right-content">
                             <div className="plan-type">
                                 <p className="plan-type-header">
-                                <b>{orderedPlans && orderedPlans[orderedPlans.length -1].PlanId == 1 ? "Basic" : orderedPlans && orderedPlans[orderedPlans.length -1].PlanId == 2 ? "Standard" : "Premium"}</b>
+                                {currentUser && currentUser.Plans[orderedPlans[orderedPlans.length -1].PlanId - 1].name}
                                 </p>
                             </div>
                             <div className="change-plan">
