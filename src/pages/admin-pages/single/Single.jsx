@@ -66,12 +66,39 @@ function Single() {
           </div>
         </div>
         <div className="bottom">
-          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div>This user has an active plan</div> : <div>This user has no active plan</div>}
-          {orderedPlans && orderedPlans.map((orderedPlan) => {
+          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div>This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
+          {/* {orderedPlans && orderedPlans.map((orderedPlan) => {
             return (
               <div key={orderedPlan.id}>{orderedPlan.pricePaid} </div>
+            
             )
-          })}
+          })} */}
+
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Registration Date</th>
+                <th>Expiration Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                orderedPlans && orderedPlans.map((plan, index) => {
+                  return <tr key={plan.id}>
+                        <td>{index + 1}</td>
+                        <td>{plan.id}</td>
+                        <td>{plan.pricePaid}</td>
+                        <td>{plan.createdAt}</td>
+                        <td>{plan.expiresAt}</td>
+                  </tr>
+                })
+              }
+            </tbody>
+          </table>
+
         </div>
       </div>
     </div>
