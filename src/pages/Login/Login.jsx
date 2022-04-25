@@ -59,13 +59,13 @@ const Login = () => {
             //ref={emailRef}
             {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
           />
-          {errors.email?.type === 'required' && <div className="alert alert-danger"> Email is required</div>}
+            {errors.email?.type === 'required' && <div className="alert alert-danger errors"> Email is required</div>}
           <input type="password" placeholder="Password"
             //ref={passwordRef}
             {...register("password", { required: true, maxLength: 20 })}
           />
-          {errors.password?.type === 'required' && <div className="alert alert-danger"> Password is required</div>}
-          {errors.password?.type === 'maxLength' && <div className="alert alert-danger">Too long password</div>}
+            {errors.password?.type === 'required' && <div className="alert alert-danger errors"> Password is required</div>}
+            {errors.password?.type === 'maxLength' && <div className="alert alert-danger errors">Too long password</div>}
           <button className="loginButton">
             Sign In</button>
             {err !== undefined && <div className="alert alert-danger errors">Wrong credentials</div>}
