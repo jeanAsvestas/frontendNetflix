@@ -1,7 +1,5 @@
 import "./Account.scss"
 import Navbar from "../../components/navbar/Navbar";
-// import { ArrowDropDown, PinDropSharp } from "@material-ui/icons"
-import CreditPayment from "../../components/credit-payment/credit.payment";
 
 import React, {
     useState, useEffect
@@ -133,17 +131,14 @@ function Account(props) {
                         <div className="right-content">
                             <div className="plan-type">
                                 <p className="plan-type-header">
-                                {currentUser && currentUser.Plans[orderedPlans[orderedPlans.length -1].PlanId - 1].name}
+                                    {currentUser && orderedPlans && currentUser.Plans[currentUser.Plans.findIndex(x => x.id === orderedPlans[orderedPlans.length - 1].PlanId)].name}
                                 </p>
                             </div>
                             <div className="change-plan">
                                 <Link to="/plans" className="change-plan-link">Change plan</Link>
                             </div>
                         </div>
-                    </div><CreditPayment />
-                    {/* <PayPalScriptProvider options={initialOptions}>
-                    <PayPalButtons style={{ layout: "horizontal" }} />
-                </PayPalScriptProvider> */}
+                    </div>
                 </div>
             </div>
             <Footer />

@@ -47,7 +47,7 @@ const Navbar = ({ filterMovies }) => {
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
           <span>Series</span>
-          <span>New Movies</span>
+          <Link to="/newmovies">New Movies</Link>
           {currentUser && <Link to={`/mylist/${currentUser.id}`} >My Watchlist</Link>}
 
         </div>

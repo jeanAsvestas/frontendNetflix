@@ -15,8 +15,7 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
     useEffect(() => {
         setCurrentUser(AuthService.getCurrentUser());
         PlanService.readPlan().then(res => {
-            setPlans(res.data.plans);
-            console.log(res.data.plans)
+            setPlans(res.data.plans);            
         })
 
     }, [])

@@ -12,7 +12,7 @@ function ListAdmin() {
         <NavbarAdmin />
         <DatatableMovies />
 
-        <Link to="/admin/moviespanel/addmovie">Add Movie</Link>
+        <Link to="/admin/moviespanel/addmovie"><button className="addMovieButton">Add Movie</button></Link>
       </div>
     </div>
   )

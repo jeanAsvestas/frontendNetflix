@@ -10,6 +10,13 @@ const getLastMovies = () => {
             return res.data;
         })
 }
+const getNewMovies = () => {
+    return axios.post(API_URL + 'readten')
+        .then((res) => {
+            //console.log(res.data)
+            return res.data;
+        })
+}
 
 const getMoviesByGenre = (genre) => {
     return axios.post(API_URL + 'read', { movie: genre })
@@ -70,7 +77,8 @@ let MovieService = {
     editMovie,
     deleteMovie,
     getMyMovies,
-    getOneMovieToEdit
+    getOneMovieToEdit,
+    getNewMovies
 };
 
 export default MovieService;
