@@ -28,11 +28,11 @@ export default function Featured({type}) {
             <div classname="video">
               <iframe width="1920" height="1080"
                 src="https://www.youtube.com/embed/7pQQHnqBa2E?autoplay=1&mute=1"
-                frameborder="0"
+                frameBorder="0"
                 loading="lazy"
                 scrolling="no"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+                allowFullScreen></iframe>
             </div>
           )}
           
@@ -75,11 +75,11 @@ export default function Featured({type}) {
             <div classname="video">
               <iframe width="1920" height="1080"
                 src="https://www.youtube.com/embed/tGpTpVyI_OQ?autoplay=1&mute=1"
-                frameborder="0"
+                frameBorder="0"
                 loading="lazy"
                 scrolling="no"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+                allowFullScreen></iframe>
             </div>
           )}
           
@@ -122,11 +122,11 @@ export default function Featured({type}) {
             <div classname="video">
               <iframe width="1920" height="1080"
                 src="https://www.youtube.com/embed/Hyag7lR8CPA?autoplay=1&mute=1"
-                frameborder="0"
+                frameBorder="0"
                 loading="lazy"
                 scrolling="no"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+                allowFullScreen></iframe>
             </div>
           )}
           

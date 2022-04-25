@@ -16,6 +16,7 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
         setCurrentUser(AuthService.getCurrentUser());
         PlanService.readPlan().then(res => {
             setPlans(res.data.plans);
+            console.log(res.data.plans)
         })
 
     }, [])
@@ -53,7 +54,7 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
                 );
             }
         );
-        setShow(false);
+        //setShow(false);
         setShowPlans(false)
     };
 
@@ -67,11 +68,11 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
             <Modal show={show} onHide={handleClose} backdrop="static"
                 keyboard={false} centered >
                 <Modal.Header closeButton>
-                    <Modal.Title>Basic subscription 7euros</Modal.Title>
+                    <Modal.Title>{plans && `${plans[planId - 1]?.name} plan for ${plans[planId - 1]?.price} €`}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <PayPalButton
-                        amount="7"
+                        amount={plans[planId - 1]?.price}
                         currency="EUR"
 
                         // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
@@ -85,7 +86,7 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
                         Close
                     </Button>
                     <Button variant="primary" type="submit" onClick={submitPayment}>
-                        Save Changes
+                        Pay Now
                     </Button>
                 </Modal.Footer>
             </Modal>

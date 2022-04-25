@@ -69,6 +69,7 @@ function Single() {
           {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div className="plan-activation">This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
           {/* {orderedPlans && orderedPlans.map((orderedPlan) => {
             return (
+
               <div key={orderedPlan.id}>{orderedPlan.pricePaid} </div>
             
             )
@@ -99,6 +100,7 @@ function Single() {
             </tbody>
           </table>
           </div>
+
         </div>
       </div>
     </div>

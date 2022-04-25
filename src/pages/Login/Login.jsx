@@ -3,7 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState } from "react";
 import AuthService from "../../services/auth_service";
 import { useForm } from 'react-hook-form';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 
 const Login = () => {
@@ -59,18 +59,18 @@ const Login = () => {
             //ref={emailRef}
             {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
           />
-          {errors.email?.type === 'required' && <div className="alert alert-danger"> Email is required</div>}
+            {errors.email?.type === 'required' && <div className="alert alert-danger errors"> Email is required</div>}
           <input type="password" placeholder="Password"
             //ref={passwordRef}
             {...register("password", { required: true, maxLength: 20 })}
           />
-          {errors.password?.type === 'required' && <div className="alert alert-danger"> Password is required</div>}
-          {errors.password?.type === 'maxLength' && <div className="alert alert-danger">Too long password</div>}
+            {errors.password?.type === 'required' && <div className="alert alert-danger errors"> Password is required</div>}
+            {errors.password?.type === 'maxLength' && <div className="alert alert-danger errors">Too long password</div>}
           <button className="loginButton">
             Sign In</button>
-          {err !== undefined && <div className="alert alert-danger">Wrong credentials</div>}
+            {err !== undefined && <div className="alert alert-danger errors">Wrong credentials</div>}
           <span>
-            New to Netflix? <b>Sign up now.</b>
+              New to Netflix? <Link to="/register"><b>Sign up now.</b></Link>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a

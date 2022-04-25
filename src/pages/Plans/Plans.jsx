@@ -11,6 +11,7 @@ import Footer from '../../components/footer/Footer';
 import CreditPayment from '../../components/credit-payment/credit.payment';
 import { PayPalButton } from "react-paypal-button-v2";
 import { Modal, Button, Form } from "react-bootstrap";
+import { SettingsPhoneTwoTone } from '@material-ui/icons';
 
 
 
@@ -33,7 +34,6 @@ const Plans = () => {
         setShow(true);
         setPlanId(e.target.id);
     }
-
 
 
     return (
