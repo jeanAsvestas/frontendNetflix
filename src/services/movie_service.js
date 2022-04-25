@@ -6,14 +6,12 @@ const API_URL = "http://localhost:4000/api/movie/";
 const getLastMovies = () => {
     return axios.post(API_URL + 'read')
         .then((res) => {
-            //console.log(res.data)
             return res.data;
         })
 }
 const getNewMovies = () => {
     return axios.post(API_URL + 'readten')
         .then((res) => {
-            //console.log(res.data)
             return res.data;
         })
 }
@@ -26,7 +24,6 @@ const getMoviesByGenre = (genre) => {
 
 }
 const getOneMovie = (userId, movieId) => {
-console.log('=--=---=-=-')
 console.log(userId,movieId)
 
     return axios.post(API_URL + `watch/${movieId}`, { userId: userId, movieId: movieId })

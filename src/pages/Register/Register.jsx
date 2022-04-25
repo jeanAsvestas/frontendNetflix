@@ -42,23 +42,23 @@ export default function Register() {
             <input type="text" placeholder="First Name"
               {...register("firstName", { required: true })}
             />
-            {errors.firstName?.type === 'required' && <div className="alert alert-danger errors"> First Name is required</div>}
+            {errors.firstName?.type === 'required' && <div className="alert2"> First Name is required</div>}
             <input type="text" placeholder="Last Name"
               {...register("lastName", { required: true })}
             />
-            {errors.lastName?.type === 'required' && <div className="alert alert-danger errors">Last Name is required</div>}
+            {errors.lastName?.type === 'required' && <div className="alert2">Last Name is required</div>}
             <input type="text" placeholder="Email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
-            {errors.email?.type === 'required' && <div className="alert alert-danger errors"> Email is required</div>}
-            {errors.email?.type === 'pattern' && <div className="alert alert-danger errors"> This is not a valid email</div>}
-            {err === 'email' && <div className="alert alert-danger errors"> This email is already used</div>}
+            {errors.email?.type === 'required' && <div className="alert2"> Email is required</div>}
+            {errors.email?.type === 'pattern' && <div className="alert2"> This is not a valid email</div>}
+            {err === 'email' && <div className="alert2"> This email is already used</div>}
             <input type="password" placeholder="Password"
               //ref={passwordRef}
               {...register("password", { required: true, maxLength: 20 })}
             />
-            {errors.password?.type === 'required' && <div className="alert alert-danger errors"> Password is required</div>}
-            {errors.password?.type === 'maxLength' && <div className="alert alert-danger errors">Too long password</div>}
+            {errors.password?.type === 'required' && <div className="alert2"> Password is required</div>}
+            {errors.password?.type === 'maxLength' && <div className="alert2">Too long password</div>}
             <button className="loginButton">
               Sign Up</button>
             {/* {err !== undefined && <div className="alert alert-danger">Wrong credentials</div>} */}

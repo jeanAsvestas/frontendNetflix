@@ -16,7 +16,7 @@ import Moviespanel from "./pages/admin-pages/moviespanel/MoviesPanel";
 import AddMovie from "./pages/admin-pages/moviespanel/addmovie/AddMovie";
 import EditMovie from "./pages/admin-pages/moviespanel/editmovie/EditMovie";
 import Account from './pages/Account/Account';
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './services/ProtectedRoute';
 import Plans from './pages/Plans/Plans';
 import MyMovies from './pages/MyMovies/MyMovies';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
