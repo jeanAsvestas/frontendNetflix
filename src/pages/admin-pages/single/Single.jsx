@@ -66,19 +66,45 @@ function Single() {
           </div>
         </div>
         <div className="bottom">
-          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div>This user has an active plan</div> : <div>This user has no active plan</div>}
-          {orderedPlans && orderedPlans.map((orderedPlan) => {
+          {orderedPlans && (new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt) > new Date()) ? <div className="plan-activation">This user has an active plan which expires at {new Date(orderedPlans[orderedPlans.length - 1]?.expiresAt).toLocaleDateString()}</div> : <div>This user has no active plan</div>}
+          {/* {orderedPlans && orderedPlans.map((orderedPlan) => {
             return (
-              <div key={orderedPlan.id}>{orderedPlan.pricePaid} name
-                {/* {orderedPlan.PlanId} */}
-                {currentUser && currentUser.Plans[orderedPlan.PlanId - 1].name}
-              </div>
+
+              <div key={orderedPlan.id}>{orderedPlan.pricePaid} </div>
+            
             )
-          })} 
+          })} */}
+          <div className="container-fluid">
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">ON</th>
+                <th scope="col">Plan Name</th>
+                <th scope="col">Plan Price</th>
+                <th scope="col">Plan Purchase Date</th>
+                <th scope="col">Plan Expiration Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                orderedPlans && orderedPlans.map((plan, index) => {
+                  return <tr scope="col" key={plan.id}>
+                        <td>{index + 1}</td>
+                        <td>{currentUser && currentUser.Plans[plan.PlanId - 1].name}</td>
+                        <td>{plan.pricePaid}</td>
+                        <td>{new Date(plan.createdAt).toLocaleDateString()}</td>
+                        <td>{new Date(plan.expiresAt).toLocaleDateString()}</td>
+                  </tr>
+                })
+              }
+            </tbody>
+          </table>
+          </div>
+
         </div>
       </div>
     </div>
   )
 }
 
-export default Single
+export default Single;
