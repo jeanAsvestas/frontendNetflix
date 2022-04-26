@@ -5,6 +5,8 @@ git clone the following repository:  https://github.com/jeanAsvestas/frontendNet
 Execute: 
     npm i
 
+Download from https://www.dropbox.com/sh/b9j1w4tzuws7hcr/AAByOKgd-CFGUDu0-SywfdE0a?dl=0 images folder and place it under ./public/images 
+
 Execute:
     npm start
 

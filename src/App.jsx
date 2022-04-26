@@ -34,7 +34,7 @@ const App = () => {
       setCurrentUser(user);
     }
   }, []);
-  console.log(currentUser)
+  // console.log(currentUser)
   // useEffect(() => {
   //   if (currentUser?.isAdmin) {
   //     console.log("22222")
