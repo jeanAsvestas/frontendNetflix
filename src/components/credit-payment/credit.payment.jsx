@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useNavigate } from "react-router-dom";
-import { convertLength } from "@mui/material/styles/cssUtils";
 import PlanService from '../../services/plan_service';
 import swal from '@sweetalert/with-react';
 import AuthService from "../../services/auth_service";
@@ -31,11 +30,7 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
         setShowPlans(false)
         //setShow(false);
     }
-    // const submitPayment = (e) => {
-    //     alert("Payment Successful");
-    //     setShow(false);
-    //     setShowPlans(false)
-    // }
+
 
     const submitPayment = () => {
         PlanService.buyPlan(currentUser, plans[planId - 1]).then(
@@ -94,49 +89,3 @@ const CreditPayment = ({ isDisplayed, setShowPlans, planId }) => {
 }
 
 export default CreditPayment;
-
-
-
-{/* <Form >
-<Form.Group className="col-sm-12" controlId="exampleForm.ControlInput1">
-    <Form.Label>Credit Card Name Holder</Form.Label>
-    <Form.Control
-        type="text"
-        placeholder="Full Name"
-        ref={modalRef}
-        onChange={CCnumber}
-        size="18"
-        maxLength="19"
-        minLength="17"
-    />
-</Form.Group>
-<Form.Group className="col-sm-12" controlId="exampleForm.ControlInput2">
-    <Form.Label>Credit Card Number</Form.Label>
-    <Form.Control
-        type="text"
-        placeholder="Credit Card Number"
-        ref={modalRef}
-        onChange={CCnumber}
-        size="18"
-        maxLength="19"
-        minLength="17"
-
-    />
-</Form.Group>
-<Form.Group className="col-sm-3" controlId="exampleForm.ControlInput2">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control
-        type="email"
-        placeholder="name@example.com"
-
-    />
-</Form.Group>
-<Form.Group className="col-sm-12" controlId="exampleForm.ControlInput2">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control
-        type="email"
-        placeholder="name@example.com"
-
-    />
-</Form.Group>
-</Form> */}
