@@ -5,12 +5,12 @@ import { useForm } from 'react-hook-form';
 // import { useNavigate } from "react-router-dom";
 import MovieService from "../../../../services/movie_service";
 
-
+const action = "add"
 const AddMovie = () => {
         const { register, handleSubmit, formState: { errors } } = useForm();
         const handleAddMovie = (data) => {
             //data.titleImage = data.titleImage[0].name;
-            MovieService.addOneMovie(data).then((res) => {
+            MovieService.addOrEditMovie(data, action).then((res) => {
                 console.log(res)
             })
         };
@@ -104,7 +104,7 @@ const AddMovie = () => {
 
                 <div className="forminput">
                 <label>Image title</label>
-                <input type="file" placeholder="Title Image"
+                              <input type="text" placeholder="Title Image"
                     {...register("titleImage", { required: true })}
                 />
                 {errors.titleImage?.type === 'required' && <div className="alert alert-danger"> Title image is required</div>}
@@ -162,7 +162,7 @@ const AddMovie = () => {
 
 
 
-                <button className="sendmoviebutton">Send Movie</button>
+                          <button className="sendmoviebutton">Add Movie</button>
             </form>
                    
                 </div>

@@ -5,10 +5,12 @@ import ListItem from "../../components/listItem/ListItem";
 import './NewMovies.scss';
 import Footer from "../../components/footer/Footer";
 
+const action = "readten"
+
 const NewMovies = () => {
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        MovieService.getNewMovies().then(res => {
+        MovieService.getXMovies(action).then(res => {
             console.log(res)
             setMovies(res);
         });

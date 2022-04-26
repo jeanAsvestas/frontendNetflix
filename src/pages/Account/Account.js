@@ -44,7 +44,7 @@ function Account(props) {
        
         PlanService.getUserPlan(props.props.id).then(res => {
             setOrderedPlans(res.data.orderedPlans);
-            console.log(res.data.orderedPlans)
+            console.log(orderedPlans)
         });
         
         UserService.getOneUser(props.props.id).then(res => {
@@ -130,9 +130,10 @@ function Account(props) {
                         </div>
                         <div className="right-content">
                             <div className="plan-type">
+                                {orderedPlans &&
                                 <p className="plan-type-header">
-                                    {currentUser && orderedPlans && currentUser.Plans[currentUser.Plans.findIndex(x => x.id === orderedPlans[orderedPlans.length - 1].PlanId)].name}
-                                </p>
+                                        {currentUser?.Plans[currentUser.Plans.findIndex(x => x.id === orderedPlans[orderedPlans?.length - 1].PlanId)]?.name}
+                                    </p>}
                             </div>
                             <div className="change-plan">
                                 <Link to="/plans" className="change-plan-link">Change plan</Link>

@@ -1,11 +1,11 @@
 
 import "./datatable-movies.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../../datatablesource-movie";
+import { userColumns } from "./datatablesource-movie";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MovieService from '../../../services/movie_service'
-
+const action = "read"
 const Datatable = () => {
   // const [data, setData] = useState(userRows);
 
@@ -27,7 +27,7 @@ const Datatable = () => {
 
   const [movies, setMovies] = useState();
   useEffect(() => {
-    MovieService.getLastMovies().then((res) => {
+    MovieService.getXMovies(action).then((res) => {
       setMovies(res)
     })
 

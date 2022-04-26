@@ -9,7 +9,7 @@ import NavbarAdmin from "../../../../components/admin-components/navbar-admin/Na
 import AuthService from "../../../../services/auth_service";
 
 
-
+const action = "update"
 
 export default function EditMovie() {
     const [movie, setMovie] = useState();
@@ -29,7 +29,7 @@ export default function EditMovie() {
     const handleEditMovie = (data) => {        
         console.log(movie)
         if (window.confirm("Do you want to edit this movie?")) {
-            MovieService.editMovie(movie)
+            MovieService.addOrEditMovie(movie, action)
             .then((res) => {
                 alert(res.message);
             }).catch(err =>{

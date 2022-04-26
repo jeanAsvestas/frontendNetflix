@@ -6,6 +6,8 @@ import ListItem from "../../components/listItem/ListItem";
 import './MyMovies.scss';
 import Footer from "../../components/footer/Footer";
 
+
+
 const MyMovies = () => {
     const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
     const [movies, setMovies] = useState([]);

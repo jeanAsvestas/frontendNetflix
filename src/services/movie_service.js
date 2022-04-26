@@ -3,18 +3,13 @@ const API_URL = "http://localhost:4000/api/movie/";
 
 
 
-const getLastMovies = () => {
-    return axios.post(API_URL + 'read')
+const getXMovies = (action) => {
+    return axios.post(API_URL + action)
         .then((res) => {
             return res.data;
         })
 }
-const getNewMovies = () => {
-    return axios.post(API_URL + 'readten')
-        .then((res) => {
-            return res.data;
-        })
-}
+
 
 const getMoviesByGenre = (genre) => {
     return axios.post(API_URL + 'read', { movie: genre })
@@ -24,20 +19,20 @@ const getMoviesByGenre = (genre) => {
 
 }
 const getOneMovie = (userId, movieId) => {
-console.log(userId,movieId)
-
     return axios.post(API_URL + `watch/${movieId}`, { userId: userId, movieId: movieId })
         .then((res) => {
             console.log(res.data)
             return res.data;
         })
 }
-const addOneMovie = (movie) => {
-    return axios.post(API_URL + 'add', { movie })
+
+const addOrEditMovie = (movie, action) => {
+    return axios.post(API_URL + action, { movie })
         .then((res) => {
             return res.data;
         })
 }
+
 const getOneMovieToEdit = (movieId) => {
     return axios.post(API_URL + `edit/${movieId}`, { movieId: movieId })
         .then((res) => {
@@ -46,12 +41,6 @@ const getOneMovieToEdit = (movieId) => {
         })
 }
 
-const editMovie = (movie) => {
-    return axios.post(API_URL + 'update', { movie })
-        .then((res) => {
-            return res.data;
-        })
-}
 const deleteMovie = (id) => {
     return axios.post(API_URL + 'delete', { id })
         .then((res) => {
@@ -67,15 +56,13 @@ const getMyMovies = (userId) => {
 }
 
 let MovieService = {
-    getLastMovies,
+    getXMovies,
     getMoviesByGenre,
     getOneMovie,
-    addOneMovie,
-    editMovie,
+    addOrEditMovie,
     deleteMovie,
     getMyMovies,
-    getOneMovieToEdit,
-    getNewMovies
+    getOneMovieToEdit
 };
 
 export default MovieService;

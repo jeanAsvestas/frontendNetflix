@@ -11,9 +11,19 @@ import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import FeedbackOutlinedIcon from '@mui/icons-material/FeedbackOutlined';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import AuthService from "../../../services/auth_service";
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+
+  const logout = () => {
+    AuthService.logout().then(
+      () => {
+        console.log("logout")
+      }
+    )
+  }
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -60,7 +70,7 @@ const Sidebar = () => {
           <li><Link to='/account'><AdminPanelSettingsOutlinedIcon className="icon" />
             <span>Profile</span></Link>
           </li>
-          <li><Link to='/logout'><ExitToAppOutlinedIcon className="icon" />
+          <li><Link to='/' onClick={logout} ><ExitToAppOutlinedIcon className="icon" />
             <span>Logout</span></Link>
           </li>
         </ul>

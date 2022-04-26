@@ -87,7 +87,7 @@ export default function Featured({type}) {
             alt=""
           />
           <div className="info">
-            <img classname="logo" src="./images/PulpFictionLogo.jpg"
+            <img classname="logo" src="https://freepikpsd.com/file/2019/10/pulp-fiction-logo-png-2-Transparent-Images.png"
               alt=""
             />
             <span className="desc">

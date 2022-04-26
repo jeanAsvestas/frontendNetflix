@@ -21,7 +21,6 @@ const Navbar = ({ filterMovies }) => {
     AuthService.logout().then(
       () => {
         console.log("logout")
-        navigate("/login");
       }
     )
   }

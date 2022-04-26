@@ -5,12 +5,14 @@ import MovieService from '../../services/movie_service'
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
+const action = "read"
+
 const Movies = () => {
     const [movies, setMovies] = useState();
     const [filteredMovies, setFilteredMovies] = useState([]);
 
     useEffect(() => {
-        MovieService.getLastMovies().then((res) => {
+        MovieService.getXMovies(action).then((res) => {
             setMovies(res)
             setFilteredMovies(res)
         })
