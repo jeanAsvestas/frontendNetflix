@@ -1,6 +1,6 @@
 # Getting Started with frontend Netflix clone 
 
-git clone the following repository:  https://github.com/sotigian/Netfix-Clone-Frontend.git
+git clone the following repository: https://github.com/jeanAsvestas/frontendNetflix
 
 Execute: 
     npm i
